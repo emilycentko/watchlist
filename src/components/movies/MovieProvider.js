@@ -13,7 +13,7 @@ export const MovieProvider = (props) => {
 
     //get movies from local API in JSON added to watchlist
     const getMovies = () => {
-        return fetch("")
+        return fetch("http://localhost:8088/movies")
             .then(res => res.json())
             .then(setMovies)
     }
@@ -22,12 +22,14 @@ export const MovieProvider = (props) => {
     const searchMovie = (searchTitle) => {
         return fetch(`https://api.themoviedb.org/3/search/movie?api_key=${tmdbAPI.apiKey}&query=${searchTitle}`)
             .then(res => res.json())
-            .then
+            .then(parsedResponse => {
+                movie = parsedResponse.list
+            })
     }
 
     //add a movie from the tmdb API and POST to local JSON API
     const addMovie = movie => {
-        return fetch("", {
+        return fetch("http://localhost:8088/movies", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -38,7 +40,7 @@ export const MovieProvider = (props) => {
     }
 
     const getMovieById = (id) => {
-        return fetch(``)
+        return fetch(`http://localhost:8088/movies${id}`)
             .then(res => res.json())
     }
 
@@ -49,7 +51,7 @@ export const MovieProvider = (props) => {
     */
     return (
         <MovieContext.Provider value={{
-            movies, getMovies, addMovie, getMovieById,
+            movies, getMovies, searchMovie, addMovie, getMovieById,
             searchTerms, setSearchTerms
         }}>
             {props.children}
