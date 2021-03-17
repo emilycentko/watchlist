@@ -8,7 +8,6 @@ import { WatchListProvider } from "./watchlists/WatchListProvider"
 export const ApplicationViews = () => {
     return (
         <>
-            {/* Render the location list when http://localhost:3000/ */}
 
             <MovieProvider>
                 <WatchListProvider>
@@ -16,9 +15,7 @@ export const ApplicationViews = () => {
                         <HomePage />
                     </Route>
 
-            {/* Render the location list when http://localhost:3000/watchlists */}
-
-                    <Route path="/watchlists">
+                    <Route exact path="/watchlists">
                         <WatchList />
                     </Route>
                 </WatchListProvider>
