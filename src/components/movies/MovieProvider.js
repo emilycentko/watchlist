@@ -36,7 +36,7 @@ export const MovieProvider = (props) => {
             },
             body: JSON.stringify(movie)
             })
-            .then(res => res.json())
+            .then(getMovies)
     }
 
     const getMovieById = (id) => {
