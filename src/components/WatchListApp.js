@@ -3,6 +3,7 @@ import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
 import { userStorageKey } from "./auth/authSettings"
 import { NavBar } from "./nav/NavBar"
+import { ApplicationViews } from "./ApplicationViews"
 
 export const WatchListApp = () => (
   <>
@@ -11,6 +12,7 @@ export const WatchListApp = () => (
         return (
           <>
             <NavBar />
+            <ApplicationViews />
           </>
         )
       } else {
