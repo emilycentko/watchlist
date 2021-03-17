@@ -1,12 +1,14 @@
 import React, { useState, createContext } from "react"
-import { tmdbAPI } from "./auth/Settings.js"
+import { tmdbAPI } from "../auth/Settings.js"
 
-//context imported and used by the components that need data
+//context to store movies and be used by the components that need this data
 export const MovieContext = createContext()
 
 //establishes WHAT data can be used
 export const MovieProvider = (props) => {
 
+    // useState hook to hold and set the array of movies
+    // define a variable that holds the state of movies and the setMovies function to update it
     const [movies, SetMovies] = useState([])
     const [ searchTerms, setSearchTerms ] = useState("")
 
