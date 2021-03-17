@@ -18,7 +18,7 @@ export const MovieProvider = (props) => {
             .then(setMovies)
     }
 
-    //search for a movie provided by tmdb API
+    //search for a movie provided by tmdb API - documentation for search query by title
     const searchMovie = (searchTitle) => {
         return fetch(`https://api.themoviedb.org/3/search/movie?api_key=${tmdbAPI.apiKey}&query=${searchTitle}`)
             .then(res => res.json())
