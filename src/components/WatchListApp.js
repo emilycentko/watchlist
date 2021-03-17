@@ -2,6 +2,8 @@ import { Route, Redirect } from "react-router-dom"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
 import { userStorageKey } from "./auth/authSettings"
+import { NavBar } from "./nav/NavBar"
+import { ApplicationViews } from "./ApplicationViews"
 
 export const WatchListApp = () => (
   <>
@@ -9,7 +11,8 @@ export const WatchListApp = () => (
       if (sessionStorage.getItem(userStorageKey)) {
         return (
           <>
-            //Components that are rendered when the user is authenticated go inside this React fragment
+            <NavBar />
+            <ApplicationViews />
           </>
         )
       } else {
@@ -18,11 +21,11 @@ export const WatchListApp = () => (
       }} 
     />
 
-  <Route path="/login">
-    <Login />
-  </Route>
-  <Route path="/register">
-    <Register />
-  </Route>
+    <Route path="/login">
+        <Login />
+    </Route>
+    <Route path="/register">
+        <Register />
+    </Route>
 </>
 )
