@@ -10,6 +10,8 @@ export const MovieProvider = (props) => {
     // useState hook to hold and set the array of movies
     // define a variable that holds the state of movies and the setMovies function to update it
     const [movies, SetMovies] = useState([])
+    
+    const [searchedMovies, SetSearchedMovies] = useState([])
     const [ searchTerms, setSearchTerms ] = useState("")
 
 
@@ -17,7 +19,7 @@ export const MovieProvider = (props) => {
     const getMovies = () => {
         return fetch("http://localhost:8088/movies")
             .then(res => res.json())
-            .then(setMovies)
+            .then(SetMovies)
     }
 
     //search for a movie provided by tmdb API - documentation for search query by title
@@ -25,18 +27,18 @@ export const MovieProvider = (props) => {
         return fetch(`https://api.themoviedb.org/3/search/movie?api_key=${tmdbAPI.apiKey}&query=${searchTitle}`)
             .then(res => res.json())
             .then(parsedResponse => {
-                movie = parsedResponse.list
+                searchedMovies(parsedResponse.data)
             })
     }
 
     //add a movie from the tmdb API and POST to local JSON API
-    const addMovie = movie => {
+    const addMovie = movieObj => {
         return fetch("http://localhost:8088/movies", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(movie)
+            body: JSON.stringify(movieObj)
             })
             .then(getMovies)
     }
