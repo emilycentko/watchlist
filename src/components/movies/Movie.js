@@ -1,27 +1,10 @@
-import React, { useState, createContext } from "react"
+import React from "react"
+import { Link } from "react-router-dom"
+import "./Movie.css"
 
-//context imported and used by the components that need data
-export const MovieContext = createContext()
 
-//establishes WHAT data can be used
-export const MovieProvider = (props) => {
+//responsible for representing HTML rendering of ONE movie on the DOM
 
-    const [movies, SetMovies] = useState([])
-    const [ searchTerms, setSearchTerms ] = useState("")
-
-    const getMovies = () => {
-        return fetch("")
-        .then(res => res.json())
-        .then(setMovies)
-    }
-
-    return (
-        <MovieContext.Provider value={{
-            movies, getMovies,
-            searchTerms, setSearchTerms
-        }}>
-            {props.children}
-        </MovieContext.Provider>
-    )
-
+export const MovieCard = () => {
+    
 }
