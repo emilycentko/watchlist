@@ -3,17 +3,17 @@ import React from "react"
 import "./Movie.css"
 
 
-//responsible for representing HTML rendering of ONE movie on the DOM
+// responsible for representing HTML rendering of ONE movie on the DOM
 
 export const MovieCard = ( {movie} ) => {
     return (
-        <section className="movie">
+        <section className="movie__card">
             {/* <Link to={`/watchlists/moviedetails/${movie.id}`}>
                 { movie.poster_path }
             </Link> */}
-            <div>
-                <img className="movie__poster" src={ movie.poster_path } alt="Movie Poster"></img>
-            </div>
+            
+            <img className="movie__poster" src={ movie.poster_path } alt="Movie Poster"></img>
         </section>
     )
 }
+

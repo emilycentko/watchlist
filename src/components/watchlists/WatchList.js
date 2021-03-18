@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import { MovieContext } from "../movies/MovieProvider"
 import { MovieCard } from "../movies/Movie"
 import { WatchListContext } from "./WatchListProvider"
 import "./WatchList.css"
-
+  
 
 export const WatchList = () => {
     
@@ -21,17 +21,19 @@ export const WatchList = () => {
 
     return (
         <>
-            <div className="row">
-                
-                <div className="row__posters">
-                
-                    {
-                    movies.map(movie => {
-                        return <MovieCard key={movie.id} movie={movie}/>
+            <h2>WatchList Name</h2>
+            <div className="watchlist">
+                {movies.map(movie => {
+                    
+                    const watchlist = watchlists.find(watchlist => watchlist.id === movie.watchlistId)
+
+                    return <MovieCard key={movie.id}
+                        movie={movie}
+                        watchlist={watchlist} />
                     })
-                    }
-                </div>
+                }         
             </div>
+    
         </>
     )
 }
