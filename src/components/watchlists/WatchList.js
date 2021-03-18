@@ -21,7 +21,7 @@ export const WatchList = () => {
 
     return (
         <>
-            <h2>WatchList Name</h2>
+            <h2>WatchList Name To Interpolate Here</h2>
             <div className="watchlist">
                 {movies.map(movie => {
                     
