@@ -12,7 +12,7 @@ export const MovieCard = ( {movie} ) => {
                 { movie.poster_path }
             </Link> */}
             
-            <img className="movie__poster" src={ movie.poster_path } alt="Movie Poster"></img>
+            <img className="movie__poster" src={ movie.poster } alt="Movie Poster"></img>
         </section>
     )
 }

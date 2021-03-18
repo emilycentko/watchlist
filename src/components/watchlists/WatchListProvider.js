@@ -3,11 +3,11 @@ import React, { useState, createContext } from "react"
 export const WatchListContext = createContext()
 
 export const WatchListProvider = (props) => {
-    const [watchlists, setWatchLists] = useState([])
+    const [watchLists, setWatchLists] = useState([])
 
 
     const getWatchLists = () => {
-        return fetch("http://localhost:8088/watchlists")
+        return fetch("http://localhost:8088/watchlists?_embed=watchListMovies")
             .then(res => res.json())
             .then(setWatchLists)
     }
@@ -30,7 +30,7 @@ export const WatchListProvider = (props) => {
     */
     return (
         <WatchListContext.Provider value={{
-            watchlists, getWatchLists, addWatchList
+            watchLists, getWatchLists, addWatchList
         }}>
             {props.children}
         </WatchListContext.Provider>
