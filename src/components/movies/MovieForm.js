@@ -1,19 +1,28 @@
 import React, { useContext, useEffect, useState } from "react"
 import { MovieContext } from "./MovieProvider"
-import { WatchListContext } from "./watchlists/WatchListProvider"
-import { WatchListMovieContext } from "./watchlists/WatchListMovieProvider"
+import { WatchListContext } from "../watchlists/WatchListProvider"
+import { WatchListMovieContext } from "../watchlists/WatchListMovieProvider"
 import { useHistory, useParams } from 'react-router-dom'
 
 // component responsible for searching and adding a movie in a form
 
-export const MovieForm = () => {
+export const AddMovieForm = () => {
 
-    const { addMovie, searchMovie, getSearchedMovieById } = useContext(MovieContext)
+    const { movies, addMovie, getMovies, searchMovie, getSearchedMovieById, searchTerms } = useContext(MovieContext)
     const { watchLists, getWatchLists } = useContext(WatchListContext)
-    const { watchListMovies, getWatchListMoves } = useContext(WatchListMovieContext)
+    const { watchListMovies, getWatchListMovies } = useContext(WatchListMovieContext)
     
     const [filteredMovies, setFilteredMovies] = useState([])
     const history = useHistory()
+
+    const [movie, setMovies] = useState({
+        title: "",
+        runtime: 0,
+        release_date: "",
+        overview: "",
+        poster_path: "",
+        userId: parseInt(localStorage.getItem("app_user_id")),
+      });
 
     useEffect(() => {
         getWatchListMovies()
@@ -27,18 +36,37 @@ export const MovieForm = () => {
     useEffect(() => {
         if (searchTerms !== "") {
             // If the search field is not blank, display matching movies
-            // const subset = movies.filter(movie => movie.title.toLowerCase().includes(searchTerms))
+            const subset = movies.filter(movie => movie.title.toLowerCase().includes(searchTerms))
             // setFiltered(subset)
             searchMovie(searchTerms)
-        } else {
-            // If the search field is blank, display all mo
-            return ""
         }
   }, [searchTerms])
     
-    const addMovie = () => {
-        if 
-    }
+  return (
+    <form className="addMovieForm">
+          <fieldset>
+            <div className="form-group">
+                
+                <label htmlFor="movie">Choose a movie:</label>
+                <select value={movie.id} id="movieId" required autoFocus className="form-control">
+                    <option value="0">Select a movie</option>
+                </select>
+                
+            </div>
+        </fieldset>
+        <fieldset>
+            <div className="form-group">
+
+                <label htmlFor="watchList">Choose a watch list:</label>
+                <select value={watchList.id} id="watchListId" required autoFocus className="form-control">
+                
+                    <option value="0">Select a watch list</option>
+                        
+                </select>
+            </div>
+        </fieldset>
+    </form>
+  )
     
     
     

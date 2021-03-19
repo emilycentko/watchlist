@@ -18,7 +18,7 @@ export const MovieProvider = (props) => {
 
     //get movies from local API in JSON added to watchlist
     const getMovies = () => {
-        return fetch("http://localhost:8088/movies")
+        return fetch("http://localhost:8088/movies?_embed=watchListMovies")
             .then(res => res.json())
             .then(setMovies)
     }
