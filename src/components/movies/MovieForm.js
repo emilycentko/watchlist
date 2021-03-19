@@ -18,6 +18,7 @@ export const AddMovieForm = () => {
 
 
     const [movie, setMovie] = useState({})
+    const [watchList, setWatchList] = useState({})
 
     const handleControlledInputChange = (event) => {
         const newMovie = { ...movie }
@@ -29,10 +30,8 @@ export const AddMovieForm = () => {
 
     const handleSaveMovie = () => {
         addMovie({
-            title: movie.title,
-            runtime: movie.runtime,
-            release_date: movie.release_date,
-            overview: movie.overview,
+            movieId: movie.id,
+            watchListId: watchList.id,
             poster: `https://image.tmdb.org/t/p/w500$${movie.poster_path}`
             })
         .then(() => history.push("/watchlists"))
@@ -43,18 +42,6 @@ export const AddMovieForm = () => {
         .then(getWatchLists)
         .then(getMovies)
     }, [])
-
-    // useEffect dependency array with dependencies - will run if dependency changes (state)
-    // searchTerms will cause a change
-
-    useEffect(() => {
-        if (searchTerms !== "") {
-            // If the search field is not blank, display matching movies
-            const subset = movies.filter(movie => movie.title.toLowerCase().includes(searchTerms))
-            // setFiltered(subset)
-            searchMovie(searchTerms)
-        }
-    }, [searchTerms])  
 
 
   return (
@@ -69,10 +56,14 @@ export const AddMovieForm = () => {
             <div className="form-group">
 
                 <label htmlFor="watchList">Choose a watch list:</label>
-                <select value ="" id="name" className="form-control">
+                <select value ={watchList.id} id="name" className="form-control">
                 
                     <option value="0">Select a watch list</option>
-                        
+                    {watchLists.map(wl => (
+                        <option key={wl.id} value={wl.id}>
+                            {wl.name}
+                        </option>
+                    ))}
                 </select>
             </div>
         </fieldset>
@@ -84,8 +75,6 @@ export const AddMovieForm = () => {
         </button>
     </form>
   )
-    
-    
   
 
 }
