@@ -9,17 +9,17 @@ export const MovieProvider = (props) => {
 
     // useState hook to hold and set the array of movies
     // define a variable that holds the state of movies and the setMovies function to update it
-    const [movies, SetMovies] = useState([])
+    const [movies, setMovies] = useState([])
     
-    const [searchedMovies, SetSearchedMovies] = useState([])
-    const [ searchTerms, setSearchTerms ] = useState("")
+    const [searchedMovies, setSearchedMovies] = useState([])
+    const [searchTerms, setSearchTerms] = useState("")
 
 
     //get movies from local API in JSON added to watchlist
     const getMovies = () => {
         return fetch("http://localhost:8088/movies")
             .then(res => res.json())
-            .then(SetMovies)
+            .then(setMovies)
     }
 
     //search for a movie provided by tmdb API - documentation for search query by title
@@ -27,7 +27,7 @@ export const MovieProvider = (props) => {
         return fetch(`https://api.themoviedb.org/3/search/movie?api_key=${tmdbAPI.apiKey}&query=${searchTitle}`)
             .then(res => res.json())
             .then(parsedResponse => {
-                searchedMovies(parsedResponse.data)
+                setSearchedMovies(parsedResponse.results)
             })
     }
 
@@ -56,6 +56,7 @@ export const MovieProvider = (props) => {
     return (
         <MovieContext.Provider value={{
             movies, getMovies, searchMovie, addMovie, getMovieById,
+            searchedMovies, setSearchedMovies,
             searchTerms, setSearchTerms
         }}>
             {props.children}

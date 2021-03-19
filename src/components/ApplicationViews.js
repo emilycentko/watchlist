@@ -5,6 +5,7 @@ import { MovieProvider } from "./movies/MovieProvider"
 import { WatchList } from "./watchlists/WatchList"
 import { WatchListProvider } from "./watchlists/WatchListProvider"
 import { WatchListMovieProvider } from "./watchlists/WatchListMovieProvider"
+import { MovieSearch } from "./movies/MovieSearch"
 
 export const ApplicationViews = () => {
     return (
@@ -14,6 +15,7 @@ export const ApplicationViews = () => {
                 <MovieProvider>
                     <WatchListProvider>
                         <Route exact path="/">
+                            <MovieSearch />
                             <HomePage />
                         </Route>
 
