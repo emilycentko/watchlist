@@ -45,21 +45,23 @@ export const AddMovieForm = () => {
         overview: movie.overview,
         poster: `https://image.tmdb.org/t/p/w500$${movie.poster_path}`
     })
-    .then(() => history.push("/"))
+    .then(() => history.push("/watchlists"))
   }
 
     
   return (
     <form className="addMovieForm">
-          <fieldset>
+        <fieldset>
             <div className="form-group">
                 <MovieSearch />
                 <label htmlFor="movie">Choose a movie:</label>
-                <select id="movieId" required autoFocus className="form-control">
+                <select value={movie.id} id="title" required autoFocus className="form-control">
                     <option value="0">Select a movie</option>
-                    //map over movies//
+                        {filteredMovies.map(movie => (
+                            <option key={movie.id} value={movie.title}>
+                                {movie.title}
+                            </option>
                 </select>
-                
             </div>
         </fieldset>
 
@@ -67,7 +69,7 @@ export const AddMovieForm = () => {
             <div className="form-group">
 
                 <label htmlFor="watchList">Choose a watch list:</label>
-                <select id="watchListId" required autoFocus className="form-control">
+                <select value ="" id="name" required autoFocus className="form-control">
                 
                     <option value="0">Select a watch list</option>
                         
