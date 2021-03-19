@@ -45,7 +45,7 @@ export const MovieProvider = (props) => {
     }
 
     const getSearchedMovieById = (id) => {
-        return fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${tmdbAPI.apiKey}&language=en-US`)
+        return fetch(`http://localhost:8088/movies/${id}`)
             .then(res => res.json())
     }
 

@@ -13,7 +13,7 @@ export const MovieCard = ( {movie} ) => {
             </Link> */}
             
             <img className="movie__poster" src={ movie.poster } alt="Movie Poster"></img>
-            <button>Add</button>
+            <button>Add / turnary / onClick func declare when clicked and import </button>
         </section>
     )
 }
