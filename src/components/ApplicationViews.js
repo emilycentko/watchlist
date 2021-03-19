@@ -16,7 +16,7 @@ export const ApplicationViews = () => {
                     <WatchListProvider>
                         <Route exact path="/">
                             <HomePage />
-                            
+                        
                             <AddMovieForm />
                         </Route>
 

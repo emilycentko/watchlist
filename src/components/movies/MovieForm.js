@@ -17,7 +17,26 @@ export const AddMovieForm = () => {
     const history = useHistory()
 
 
-    const [movie, setMovies] = useState({})
+    const [movie, setMovie] = useState({})
+
+    const handleControlledInputChange = (event) => {
+        const newMovie = { ...movie }
+        let selectedVal = event.target.value
+
+        newMovie[event.target.id] = selectedVal
+        setMovie(newMovie)
+    }
+
+    const handleSaveMovie = () => {
+        addMovie({
+            title: movie.title,
+            runtime: movie.runtime,
+            release_date: movie.release_date,
+            overview: movie.overview,
+            poster: `https://image.tmdb.org/t/p/w500$${movie.poster_path}`
+            })
+        .then(() => history.push("/watchlists"))
+    }
 
     useEffect(() => {
         getWatchListMovies()
@@ -27,7 +46,7 @@ export const AddMovieForm = () => {
 
     // useEffect dependency array with dependencies - will run if dependency changes (state)
     // searchTerms will cause a change
-    
+
     useEffect(() => {
         if (searchTerms !== "") {
             // If the search field is not blank, display matching movies
@@ -35,32 +54,22 @@ export const AddMovieForm = () => {
             // setFiltered(subset)
             searchMovie(searchTerms)
         }
-  }, [searchTerms])
+    }, [searchTerms])  
 
-  const handleSaveMovie = () => {
-    addMovie({
-        title: movie.title,
-        runtime: movie.runtime,
-        release_date: movie.release_date,
-        overview: movie.overview,
-        poster: `https://image.tmdb.org/t/p/w500$${movie.poster_path}`
-    })
-    .then(() => history.push("/watchlists"))
-  }
 
-    
   return (
     <form className="addMovieForm">
         <fieldset>
             <div className="form-group">
                 <MovieSearch />
                 <label htmlFor="movie">Choose a movie:</label>
-                <select value={movie.id} id="title" required autoFocus className="form-control">
+                <select value={movie.id} id="title" className="form-control" onChange={handleControlledInputChange}>
                     <option value="0">Select a movie</option>
-                        {filteredMovies.map(movie => (
-                            <option key={movie.id} value={movie.title}>
-                                {movie.title}
+                        {filteredMovies.map(searchedMovie => (
+                            <option key={searchedMovie.id} value={searchedMovie.title}>
+                                {searchedMovie.title}
                             </option>
+                    ))}
                 </select>
             </div>
         </fieldset>
@@ -69,7 +78,7 @@ export const AddMovieForm = () => {
             <div className="form-group">
 
                 <label htmlFor="watchList">Choose a watch list:</label>
-                <select value ="" id="name" required autoFocus className="form-control">
+                <select value ="" id="name" className="form-control">
                 
                     <option value="0">Select a watch list</option>
                         

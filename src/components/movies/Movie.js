@@ -13,8 +13,7 @@ export const MovieCard = ( {movie} ) => {
             </Link> */}
             
             <img className="movie__poster" src={ movie.poster } alt="Movie Poster"></img>
-            <button>Add / turnary / onClick func declare when clicked and import </button>
+            {/* {movie.watchListMovie.watchListid !== 0 ? "<button onClick={() => {history.push("/movies/add")}}>" */}
         </section>
     )
 }
-
