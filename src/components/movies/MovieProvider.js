@@ -11,7 +11,8 @@ export const MovieProvider = (props) => {
     // define a variable that holds the state of movies and the setMovies function to update it
     const [movies, setMovies] = useState([])
     
-    const [searchedMovies, setSearchedMovies] = useState([])
+    //search variable and state
+    const [filteredMovies, setFilteredMovies] = useState([])
     const [searchTerms, setSearchTerms] = useState("")
 
 
@@ -24,10 +25,10 @@ export const MovieProvider = (props) => {
 
     //search for a movie provided by tmdb API - documentation for search query by title
     const searchMovie = (searchTitle) => {
-        return fetch(`https://api.themoviedb.org/3/search/movie?api_key=${tmdbAPI.apiKey}&query=${searchTitle}`)
+        return fetch(`${tmdbAPI.baseURL}${tmdbAPI.apiKey}&query=${searchTitle}`)
             .then(res => res.json())
             .then(parsedResponse => {
-                setSearchedMovies(parsedResponse.results)
+                setFilteredMovies(parsedResponse.results)
             })
     }
 
@@ -43,8 +44,8 @@ export const MovieProvider = (props) => {
             .then(getMovies)
     }
 
-    const getMovieById = (id) => {
-        return fetch(`http://localhost:8088/movies${id}`)
+    const getSearchedMovieById = (id) => {
+        return fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${tmdbAPI.apiKey}&language=en-US`)
             .then(res => res.json())
     }
 
@@ -55,8 +56,8 @@ export const MovieProvider = (props) => {
     */
     return (
         <MovieContext.Provider value={{
-            movies, getMovies, searchMovie, addMovie, getMovieById,
-            searchedMovies, setSearchedMovies,
+            movies, getMovies, searchMovie, addMovie, getSearchedMovieById,
+            filteredMovies, setFilteredMovies,
             searchTerms, setSearchTerms
         }}>
             {props.children}
