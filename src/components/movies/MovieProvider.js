@@ -18,7 +18,7 @@ export const MovieProvider = (props) => {
 
     //get movies from local API in JSON added to watchlist
     const getMovies = () => {
-        return fetch("http://localhost:8088/movies?_embed=watchListMovies")
+        return fetch("http://localhost:8088/watchLists?_embed=watchListMovies")
             .then(res => res.json())
             .then(setMovies)
     }
@@ -28,13 +28,14 @@ export const MovieProvider = (props) => {
         return fetch(`${tmdbAPI.baseURL}${tmdbAPI.apiKey}&query=${searchTitle}`)
             .then(res => res.json())
             .then(parsedResponse => {
+                console.log(parsedResponse.results)
                 setFilteredMovies(parsedResponse.results)
             })
     }
 
     //add a movie from the tmdb API and POST to local JSON API
     const addMovie = movieObj => {
-        return fetch("http://localhost:8088/movies", {
+        return fetch("http://localhost:8088/watchLists?_embed=watchListMovies", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -45,7 +46,7 @@ export const MovieProvider = (props) => {
     }
 
     const getSearchedMovieById = (id) => {
-        return fetch(`http://localhost:8088/movies/${id}`)
+        return fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${tmdbAPI.apiKey}&language=en-US`)
             .then(res => res.json())
     }
 

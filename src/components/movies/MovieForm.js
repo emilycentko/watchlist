@@ -62,15 +62,6 @@ export const AddMovieForm = () => {
         <fieldset>
             <div className="form-group">
                 <MovieSearch />
-                <label htmlFor="movie">Choose a movie:</label>
-                <select value={movie.id} id="title" className="form-control" onChange={handleControlledInputChange}>
-                    <option value="0">Select a movie</option>
-                        {filteredMovies.map(searchedMovie => (
-                            <option key={searchedMovie.id} value={searchedMovie.title}>
-                                {searchedMovie.title}
-                            </option>
-                    ))}
-                </select>
             </div>
         </fieldset>
 
