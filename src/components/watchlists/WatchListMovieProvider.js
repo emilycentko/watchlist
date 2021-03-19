@@ -12,8 +12,6 @@ export const WatchListMovieProvider = (props) => {
             .then(setWatchListMovies)
     }
 
-
-
     /*return a context provider, which has the `watchlists` state & the
     function keys to allow any child elements to access them
     */

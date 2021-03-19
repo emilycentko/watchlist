@@ -5,6 +5,7 @@ import { MovieProvider } from "./movies/MovieProvider"
 import { WatchList } from "./watchlists/WatchList"
 import { WatchListProvider } from "./watchlists/WatchListProvider"
 import { WatchListMovieProvider } from "./watchlists/WatchListMovieProvider"
+import { AddMovieForm } from "./movies/MovieForm"
 
 export const ApplicationViews = () => {
     return (
@@ -15,6 +16,8 @@ export const ApplicationViews = () => {
                     <WatchListProvider>
                         <Route exact path="/">
                             <HomePage />
+                        
+                            <AddMovieForm />
                         </Route>
 
                         <Route exact path="/watchlists">

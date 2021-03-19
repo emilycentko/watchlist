@@ -19,39 +19,26 @@ export const WatchList = () => {
         getWatchLists()
     }, [])
 
-
+    /* getWatchLists fetch call for watch lists embeds the join table
+    watchListMovies, which contains array of movies within that watch list.
+    Return maps over watchLists and grabs the data associated with all movies
+    in each watch list from that join table */
 
     return (
 
         <>
-            <div>
+            <div className="watchlist__list">
 
                 {watchLists.map(watchList => {
 
 
-                    return <div>
-                        <h3>{watchList.name}</h3>
-                        {watchList.watchListMovies.map(movie => <MovieCard key={movie.id} movie={movie} />)}
-                    </div>
+                    return <div className ="watchlist">
+                                <h3 className="watchlist__title">{watchList.name}</h3>
+                                    {watchList.watchListMovies.map(movie => <MovieCard key={movie.id} movie={movie} />)}
+                            </div>
                 })
                 }
             </div>
         </>
     )
 }
-
-    // return (
-    //     <>
-    //         <div className="watchlist">
-
-    //         {/* {movies.map(movie => {
-
-    //                 return <MovieCard key={movie.id}
-    //                     movie={movie}
-    //                 />
-    //                 })
-    //             }          */}
-    //         </div>
-
-    //     </>
-    // )

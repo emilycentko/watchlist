@@ -13,7 +13,7 @@ export const MovieCard = ( {movie} ) => {
             </Link> */}
             
             <img className="movie__poster" src={ movie.poster } alt="Movie Poster"></img>
+            {/* {movie.watchListMovie.watchListid !== 0 ? "<button onClick={() => {history.push("/watchlists")}}>" */}
         </section>
     )
 }
-

@@ -9,31 +9,33 @@ export const MovieProvider = (props) => {
 
     // useState hook to hold and set the array of movies
     // define a variable that holds the state of movies and the setMovies function to update it
-    const [movies, SetMovies] = useState([])
+    const [movies, setMovies] = useState([])
     
-    const [searchedMovies, SetSearchedMovies] = useState([])
-    const [ searchTerms, setSearchTerms ] = useState("")
+    //search variable and state
+    const [filteredMovies, setFilteredMovies] = useState([])
+    const [searchTerms, setSearchTerms] = useState("")
 
 
     //get movies from local API in JSON added to watchlist
     const getMovies = () => {
-        return fetch("http://localhost:8088/movies")
+        return fetch("http://localhost:8088/watchLists?_embed=watchListMovies")
             .then(res => res.json())
-            .then(SetMovies)
+            .then(setMovies)
     }
 
     //search for a movie provided by tmdb API - documentation for search query by title
     const searchMovie = (searchTitle) => {
-        return fetch(`https://api.themoviedb.org/3/search/movie?api_key=${tmdbAPI.apiKey}&query=${searchTitle}`)
+        return fetch(`${tmdbAPI.baseURL}${tmdbAPI.apiKey}&query=${searchTitle}`)
             .then(res => res.json())
             .then(parsedResponse => {
-                searchedMovies(parsedResponse.data)
+                console.log(parsedResponse.results)
+                setFilteredMovies(parsedResponse.results)
             })
     }
 
-    //add a movie from the tmdb API and POST to local JSON API
+    //add a movie from the tmdb API and POST to local JSON watchlist
     const addMovie = movieObj => {
-        return fetch("http://localhost:8088/movies", {
+        return fetch("http://localhost:8088/watchLists?_embed=watchListMovies", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -43,8 +45,8 @@ export const MovieProvider = (props) => {
             .then(getMovies)
     }
 
-    const getMovieById = (id) => {
-        return fetch(`http://localhost:8088/movies${id}`)
+    const getSearchedMovieById = (id) => {
+        return fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${tmdbAPI.apiKey}&language=en-US`)
             .then(res => res.json())
     }
 
@@ -55,7 +57,8 @@ export const MovieProvider = (props) => {
     */
     return (
         <MovieContext.Provider value={{
-            movies, getMovies, searchMovie, addMovie, getMovieById,
+            movies, getMovies, searchMovie, addMovie, getSearchedMovieById,
+            filteredMovies, setFilteredMovies,
             searchTerms, setSearchTerms
         }}>
             {props.children}

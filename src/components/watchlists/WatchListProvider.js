@@ -7,13 +7,13 @@ export const WatchListProvider = (props) => {
 
 
     const getWatchLists = () => {
-        return fetch("http://localhost:8088/watchlists?_embed=watchListMovies")
+        return fetch("http://localhost:8088/watchLists?_embed=watchListMovies")
             .then(res => res.json())
             .then(setWatchLists)
     }
 
     const addWatchList = watchlist => {
-        return fetch("http://localhost:8088/watchlists", {
+        return fetch("http://localhost:8088/watchLists", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
