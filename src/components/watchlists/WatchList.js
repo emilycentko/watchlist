@@ -41,6 +41,9 @@ export const WatchList = () => {
     return (
 
         <>
+            <div className="watchlists">
+            <button onClick={() => {history.push("/watchlists/create")}}>Create a New WatchList</button>
+            </div>
             <div className="watchlist__list">
 
                 {watchLists.filter(watchList => watchList.userId === userId).map(watchList => {
