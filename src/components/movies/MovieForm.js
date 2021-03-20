@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { MovieContext } from "./MovieProvider"
 import { WatchListContext } from "../watchlists/WatchListProvider"
 import { WatchListMovieContext } from "../watchlists/WatchListMovieProvider"
-import { useHistory, useParams } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { MovieSearch } from "./MovieSearch"
 
 // component responsible for searching and adding a movie in a form
@@ -13,7 +13,9 @@ export const AddMovieForm = () => {
     const { watchLists, getWatchLists } = useContext(WatchListContext)
     const { watchListMovies, getWatchListMovies } = useContext(WatchListMovieContext)
     
-    const [filteredMovies, setFilteredMovies] = useState([])
+    // const [filteredMovies, setFilteredMovies] = useState([])
+
+    const userId =  parseInt(localStorage.getItem("app_user_id"))
     const history = useHistory()
 
 
@@ -32,7 +34,8 @@ export const AddMovieForm = () => {
         addMovie({
             movieId: movie.id,
             watchListId: watchList.id,
-            poster: `https://image.tmdb.org/t/p/w500$${movie.poster_path}`
+            poster: `https://image.tmdb.org/t/p/w500$${movie.poster_path}`,
+            userId: parseInt(localStorage.getItem("app_user_id"))
             })
         .then(() => history.push("/watchlists"))
     }
