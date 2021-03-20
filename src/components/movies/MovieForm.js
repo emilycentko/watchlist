@@ -4,6 +4,7 @@ import { WatchListContext } from "../watchlists/WatchListProvider"
 import { WatchListMovieContext } from "../watchlists/WatchListMovieProvider"
 import { useHistory } from 'react-router-dom'
 import { MovieSearch } from "./MovieSearch"
+import { userStorageKey } from "../auth/authSettings";
 
 // component responsible for searching and adding a movie in a form
 
@@ -15,7 +16,7 @@ export const AddMovieForm = () => {
     
     // const [filteredMovies, setFilteredMovies] = useState([])
 
-    const userId =  parseInt(localStorage.getItem("app_user_id"))
+    const currentUserId =  parseInt(sessionStorage.getItem(userStorageKey))
     const history = useHistory()
 
 
@@ -35,7 +36,7 @@ export const AddMovieForm = () => {
             movieId: movie.id,
             watchListId: watchList.id,
             poster: `https://image.tmdb.org/t/p/w500$${movie.poster_path}`,
-            userId: parseInt(localStorage.getItem("app_user_id"))
+            userId: currentUserId
             })
         .then(() => history.push("/watchlists"))
     }
