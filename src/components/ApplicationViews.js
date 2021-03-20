@@ -6,26 +6,28 @@ import { WatchList } from "./watchlists/WatchList"
 import { WatchListProvider } from "./watchlists/WatchListProvider"
 import { WatchListMovieProvider } from "./watchlists/WatchListMovieProvider"
 import { AddMovieForm } from "./movies/MovieForm"
+import { UserProvider } from "./users/UserProvider"
 
 export const ApplicationViews = () => {
     return (
         <>
-
-            <WatchListMovieProvider>     
-                <MovieProvider>
-                    <WatchListProvider>
-                        <Route exact path="/">
-                            <HomePage />
+            <UserProvider>
+                <WatchListMovieProvider>     
+                    <MovieProvider>
+                        <WatchListProvider>
+                            <Route exact path="/">
+                                <HomePage />
                         
-                            <AddMovieForm />
-                        </Route>
+                                <AddMovieForm />
+                            </Route>
 
-                        <Route exact path="/watchlists">
+                            <Route exact path="/watchlists">
                             <WatchList />
-                        </Route>
-                    </WatchListProvider>
-                </MovieProvider>
-            </WatchListMovieProvider>
+                            </Route>
+                        </WatchListProvider>
+                    </MovieProvider>
+                </WatchListMovieProvider>
+            </UserProvider>
         </>
     )
 }
