@@ -23,6 +23,11 @@ export const WatchListProvider = (props) => {
             .then(getWatchLists)
     }
 
+    const getWatchListById = (id) => {
+        return fetch(`http://localhost:8088/watchLists/${id}?_embed=watchListMovies`)
+            .then(res => res.json())
+    }
+
     const editWatchList = watchList => {
         return fetch(`http://localhost:8088/watchLists/${watchList.id}`, {
           method: "PUT",
@@ -40,7 +45,7 @@ export const WatchListProvider = (props) => {
     */
     return (
         <WatchListContext.Provider value={{
-            watchLists, getWatchLists, addWatchList, editWatchList
+            watchLists, getWatchLists, addWatchList, getWatchListById, editWatchList
         }}>
             {props.children}
         </WatchListContext.Provider>

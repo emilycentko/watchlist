@@ -5,8 +5,8 @@ import { MovieCard } from "../movies/Movie"
 import { WatchListContext } from "./WatchListProvider"
 import { WatchListMovieContext } from "./WatchListMovieProvider"
 import { userStorageKey } from "../auth/authSettings";
-import "./WatchList.css"
 import { UserContext } from "../users/UserProvider"
+import "./WatchList.css"
 
 
 export const WatchList = () => {
@@ -47,10 +47,13 @@ export const WatchList = () => {
             <div className="watchlist__list">
 
                 {watchLists.filter(watchList => watchList.userId === userId).map(watchList => {
-
+                    
 
                     return <div className ="watchlist">
                                 <h3 className="watchlist__name">{watchList.name}</h3>
+                                <button onClick={() => {
+                                    history.push(`/watchlists/edit/${watchList.id}`)
+                                    }}>Edit WatchList Name</button>
                                     {watchList.watchListMovies.map(movie => <MovieCard key={movie.id} movie={movie} />)}
                             </div>
                 })
