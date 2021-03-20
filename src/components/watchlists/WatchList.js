@@ -16,22 +16,25 @@ export const WatchList = () => {
     const { watchListMovies, getWatchListMovies } = useContext(WatchListMovieContext)
     const { users, getUsers } = useContext(UserContext)
 
-    const currentUserId = parseInt(sessionStorage.getItem(userStorageKey))
-    const currentUser = users.find(user => user.id === currentUserId)
+    const [userWatchList, setUserWatchList] = useState([])
+    const [movie, setMovies] = useState({})
+
+    const userId = parseInt(sessionStorage.getItem(userStorageKey))
+  
     const history = useHistory()
 
     
     useEffect(() => {
         getUsers()
-    }, [])
-
-    useEffect(() => {
-        getWatchLists()
+        .then(getWatchListMovies)
+        .then(getWatchLists)
     }, [])
 
 
     /* getWatchLists fetch call for watch lists embeds the join table
-    watchListMovies, which contains array of movies within that watch list.
+    watchListMovies, which contains array of movies within that watch list,
+    filtering watch lists for that user.
+    
     Return maps over watchLists and grabs the data associated with all movies
     in each watch list from that join table */
 
@@ -40,11 +43,11 @@ export const WatchList = () => {
         <>
             <div className="watchlist__list">
 
-                {watchLists.map(watchList => {
+                {watchLists.filter(watchList => watchList.userId === userId).map(watchList => {
 
 
                     return <div className ="watchlist">
-                                <h3 className="watchlist__title">{watchList.name}</h3>
+                                <h3 className="watchlist__name">{watchList.name}</h3>
                                     {watchList.watchListMovies.map(movie => <MovieCard key={movie.id} movie={movie} />)}
                             </div>
                 })
