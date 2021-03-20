@@ -30,7 +30,7 @@ export const ApplicationViews = () => {
                                 <WatchListForm />
                             </Route>
 
-                            <Route path="/watchlists/edit/:watchlistId(\d+)">
+                            <Route path="/watchlists/edit/:watchListId(\d+)">
                                 <WatchListForm />
                             </Route>
                         </WatchListProvider>

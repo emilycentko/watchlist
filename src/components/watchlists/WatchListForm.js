@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from 'react-router-dom';
-import { MovieContext } from "../movies/MovieProvider"
+// import { MovieContext } from "../movies/MovieProvider"
 import { WatchListContext } from "./WatchListProvider"
-import { WatchListMovieContext } from "./WatchListMovieProvider"
+// import { WatchListMovieContext } from "./WatchListMovieProvider"
 import { userStorageKey } from "../auth/authSettings";
-import { UserContext } from "../users/UserProvider"
+// import { UserContext } from "../users/UserProvider"
 import "./WatchList.css"
 
 //responsible for both adding a new watch list and editing an existing watch list title
@@ -12,8 +12,8 @@ import "./WatchList.css"
 export const WatchListForm = () => {
 
     const { addWatchList, getWatchListById, editWatchList } = useContext(WatchListContext)
-    const { watchListMovies, getWatchListMovies } = useContext(WatchListMovieContext)
-    const { users, getUsers } = useContext(UserContext)
+    // const { watchListMovies, getWatchListMovies } = useContext(WatchListMovieContext)
+    // const { users, getUsers } = useContext(UserContext)
 
     const currentUserId =  parseInt(sessionStorage.getItem(userStorageKey))
 
@@ -35,6 +35,8 @@ export const WatchListForm = () => {
         setWatchList(newWatchList)
     }
 
+    /*This function determines if this is a new watch list or an edit, prepares an object
+    with new watch list data and invokes appropriate provider: edit or addWatchList */
     const handleSaveWatchList = () => {
 
         if (watchList.name === "") {
@@ -42,7 +44,7 @@ export const WatchListForm = () => {
           } else {
             setIsLoading(true);
   
-        if (watchListId){
+        if (watchListId) {
             
             editWatchList({
                 id: watchList.id,
@@ -61,6 +63,8 @@ export const WatchListForm = () => {
         }
       }
 
+      /* Determine if this is an edit based on watchListId in the URL.
+        If true, invoke getWatchListById and then setWatchList state. */
       useEffect(() => {
         if (watchListId) {
           getWatchListById(watchListId)
