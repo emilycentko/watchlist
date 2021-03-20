@@ -28,9 +28,9 @@ export const WatchListForm = () => {
     const handleControlledInputChange = (event) => {
         const newWatchList = { ...watchList }
 
-        newWatchLis[event.target.id] = event.target.value
+        newWatchList[event.target.id] = event.target.value
        
-        setWatchList(newWatchLis)
+        setWatchList(newWatchList)
     }
 
     const handleSaveWatchList = () => {
