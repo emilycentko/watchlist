@@ -16,12 +16,13 @@ export const HomePage = () => {
         getUsers()
     }, [])
 
+    //establishes state of current authenticated user by id
     useEffect(() => {
         const currentUser = users.find(user => user.id === userId)
         if(currentUser) setUser(currentUser)
     }, [users])
 
-
+    //user-specific welcome message 
     return (
         <>
             <h2>WatchList</h2>
