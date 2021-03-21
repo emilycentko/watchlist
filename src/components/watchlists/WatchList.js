@@ -42,7 +42,7 @@ export const WatchList = () => {
 
         <>
             <div className="watchlists">
-            <button onClick={() => {history.push("/watchlists/create")}}>Create a New WatchList</button>
+                <button onClick={() => {history.push("/watchlists/create")}}>Create a New WatchList</button>
             </div>
             <div className="watchlist__list">
 

@@ -22,13 +22,13 @@ export const MovieSearch = () => {
         </div>
         <div className="searched__movies">
               {filteredMovies.map(movie =>
-              <div>
-              <img className="filtered__movies" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}></img>
-                <button
-                  onClick={() => {
-                    history.push(`/watchlists`)
-                  }}>Add Movie
-                </button>
+              <div className="searched__movieContainer">
+                <img className="filtered__moviePoster" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}></img>
+                  <button className="add__movieButton"
+                    onClick={() => {
+                      history.push(`/`)
+                    }}>Add Movie
+                  </button>
               </div>
               )}
         </div>

@@ -1,3 +1,8 @@
-.filtered__movies {
+.searched__movieContainer {
+    width: 150px;
+    margin: 5px 0px;
+}
+
+.filtered__moviePoster {
     height: 200px;
 }
