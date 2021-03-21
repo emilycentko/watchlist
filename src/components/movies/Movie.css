@@ -1,6 +1,11 @@
+.searched__movies {
+    display: flex;
+}
+
 .searched__movieContainer {
     width: 150px;
     margin: 5px 0px;
+    text-align: center;
 }
 
 .filtered__moviePoster {
