@@ -2,8 +2,11 @@ import React, { useContext, useState } from "react"
 import { MovieContext } from "./MovieProvider"
 import { useHistory } from "react-router-dom"
 
+//component responsible for searching a movie and displaying filtered movies with a button to add
+//called in MovieForm
+
 export const MovieSearch = () => {
-    const { searchMovie, filteredMovies, setFilteredMovies } = useContext(MovieContext)
+    const { movies, searchMovie, filteredMovies, setFilteredMovies } = useContext(MovieContext)
 
     const [movie, setMovie] = useState({})
 
@@ -34,11 +37,10 @@ export const MovieSearch = () => {
               {filteredMovies.map(movie =>
               <div className="searched__movieContainer">
                 <img className="filtered__moviePoster" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}></img>
-                  <button className="add__movieButton"
-                    onClick={event => {
-                      event.preventDefault()
-                      handleControlledInputChange()
-                  }}>Add Movie
+                  <button key={movie.id} value={movie.title} id="movieId" className="add__movieButton"
+                    onClick={
+                      handleControlledInputChange}
+                  >Add Movie
                   </button>
               </div>
               )}

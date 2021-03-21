@@ -4,15 +4,17 @@ import { WatchListContext } from "../watchlists/WatchListProvider"
 import { WatchListMovieContext } from "../watchlists/WatchListMovieProvider"
 import { useHistory } from 'react-router-dom'
 import { MovieSearch } from "./MovieSearch"
-import { userStorageKey } from "../auth/authSettings";
+import { userStorageKey } from "../auth/authSettings"
+import { UserContext } from "../users/UserProvider"
 
 // component responsible for searching and adding a movie in a form
 
 export const AddMovieForm = () => {
 
-    const { movies, addMovie, getMovies, searchMovie, searchTerms } = useContext(MovieContext)
+    const { addMovie, getMovies } = useContext(MovieContext)
     const { watchLists, getWatchLists } = useContext(WatchListContext)
     const { watchListMovies, getWatchListMovies } = useContext(WatchListMovieContext)
+    const { users, getUsers } = useContext(UserContext)
     
     // const [filteredMovies, setFilteredMovies] = useState([])
 
@@ -42,8 +44,9 @@ export const AddMovieForm = () => {
     }
 
     useEffect(() => {
-        getWatchListMovies()
-        .then(getWatchLists)
+        getWatchLists()
+        .then(getUsers)
+        .then (getWatchListMovies)
         .then(getMovies)
     }, [])
 
@@ -60,7 +63,7 @@ export const AddMovieForm = () => {
             <div className="form-group">
 
                 <label htmlFor="watchList">Choose a watch list:</label>
-                <select value ={watchList.id} id="name" className="form-control">
+                <select value ={watchList.id} id="watchListId" className="form-control">
                 
                     <option value="0">Select a watch list</option>
                     {watchLists.map(wl => (
