@@ -12,7 +12,7 @@ export const MovieCard = ( {movie} ) => {
                 { movie.poster_path }
             </Link> */}
             
-            <img className="movie__poster" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}/>
+            <img className="movie__poster" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/>
             
         </section>
     )

@@ -38,8 +38,8 @@ export const AddMovieForm = () => {
         addMovie({
             movieId: movie.id,
             watchListId: watchList.id,
-            poster: `https://image.tmdb.org/t/p/w500$${movie.poster_path}`,
-            userId: currentUserId
+            poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+            userId: currentUserId,
             })
         .then(() => history.push("/watchlists"))
     }
@@ -64,7 +64,7 @@ export const AddMovieForm = () => {
             <div className="form-group">
 
                 <label htmlFor="watchList">Choose a watch list:</label>
-                <select value ={watchList.id} id="watchListId" className="form-control">
+                <select value ={watchList.id} id="watchListId" className="form-control" onChange={handleControlledInputChange}>
                 
                     <option value="0">Select a watch list</option>
                     {watchLists.map(wl => (
@@ -83,6 +83,4 @@ export const AddMovieForm = () => {
         </button>
     </form>
   )
-  
-
 }
