@@ -37,11 +37,10 @@ export const MovieSearch = () => {
               {filteredMovies.map(movie =>
               <div className="searched__movieContainer">
                 <img className="filtered__moviePoster" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}></img>
-                  <button key={movie.id} value={movie.title} id="movieId" className="add__movieButton"
-                    onClick={
-                      handleControlledInputChange}
-                  >Add Movie
-                  </button>
+                  <label htmlFor="add"></label>
+                  <input type ="button" id="movieId" className="add__movieButton"
+                    onClick={handleControlledInputChange}
+                    value="Add"/>
               </div>
               )}
         </div>

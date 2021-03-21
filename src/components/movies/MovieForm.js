@@ -34,6 +34,7 @@ export const AddMovieForm = () => {
     }
 
     const handleSaveMovie = () => {
+        
         addMovie({
             movieId: movie.id,
             watchListId: watchList.id,
