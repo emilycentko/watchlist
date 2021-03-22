@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react"
+import React, { useState, createContext, useContext } from "react"
 import { tmdbAPI } from "../auth/Settings.js"
 
 //context to store movies and be used by the components that need this data
@@ -15,14 +15,6 @@ export const MovieProvider = (props) => {
     const [filteredMovies, setFilteredMovies] = useState([])
     const [searchTerms, setSearchTerms] = useState("")
 
-
-    //get movies from local API in JSON added to watchlist
-    const getMovies = () => {
-        return fetch("http://localhost:8088/watchLists?_embed=watchListMovies")
-            .then(res => res.json())
-            .then(setMovies)
-    }
-
     //search for a movie provided by tmdb API - documentation for search query by title
     const searchMovie = (searchTitle) => {
         return fetch(`${tmdbAPI.baseURL}${tmdbAPI.apiKey}&query=${searchTitle}`)
@@ -33,18 +25,7 @@ export const MovieProvider = (props) => {
             })
     }
 
-    //add a movie from the tmdb API and POST to local JSON watchlist
-    const addMovie = movieObj => {
-        return fetch("http://localhost:8088/watchLists?_embed=watchListMovies", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(movieObj)
-            })
-            .then(getMovies)
-    }
-
+    //grabs the id and poster_path for AddMovie form
     const getSearchedMovieById = (id) => {
         return fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${tmdbAPI.apiKey}&language=en-US`)
             .then(res => res.json())
@@ -57,7 +38,7 @@ export const MovieProvider = (props) => {
     */
     return (
         <MovieContext.Provider value={{
-            movies, getMovies, searchMovie, addMovie, getSearchedMovieById,
+            movies, searchMovie, getSearchedMovieById,
             filteredMovies, setFilteredMovies,
             searchTerms, setSearchTerms
         }}>

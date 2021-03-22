@@ -11,13 +11,9 @@ import "./WatchList.css"
 
 export const WatchList = () => {
 
-    const { movies, getMovies } = useContext(MovieContext)
     const { watchLists, getWatchLists } = useContext(WatchListContext)
-    const { watchListMovies, getWatchListMovies } = useContext(WatchListMovieContext)
-    const { users, getUsers } = useContext(UserContext)
-
-    const [userWatchList, setUserWatchList] = useState([])
-    const [movie, setMovies] = useState({})
+    const { getWatchListMovies } = useContext(WatchListMovieContext)
+    const { getUsers } = useContext(UserContext)
 
     const userId = parseInt(sessionStorage.getItem(userStorageKey))
   
@@ -42,7 +38,7 @@ export const WatchList = () => {
 
         <>
             <div className="watchlists">
-            <button onClick={() => {history.push("/watchlists/create")}}>Create a New WatchList</button>
+                <button onClick={() => {history.push("/watchlists/create")}}>Create a New WatchList</button>
             </div>
             <div className="watchlist__list">
 

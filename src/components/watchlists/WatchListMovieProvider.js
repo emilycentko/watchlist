@@ -4,20 +4,34 @@ export const WatchListMovieContext = createContext()
 
 export const WatchListMovieProvider = (props) => {
     const [watchListMovies, setWatchListMovies] = useState([])
+    const [movieId, setMovieId] = useState(0)
 
 
     const getWatchListMovies = () => {
-        return fetch("http://localhost:8088/watchlistmovies?_expand=movie&_expand=watchList")
+        return fetch("http://localhost:8088/watchListMovies")
             .then(res => res.json())
             .then(setWatchListMovies)
     }
 
-    /*return a context provider, which has the `watchlists` state & the
+    //add a movie from the tmdb API and POST to local JSON watchlist
+    const addMovie = movie => {
+        return fetch("http://localhost:8088/watchListMovies", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(movie)
+            })
+            .then(getWatchListMovies)
+    }
+
+    /*return a context provider, which has the `watchlistmovies` state & the
     function keys to allow any child elements to access them
     */
     return (
         <WatchListMovieContext.Provider value={{
-            watchListMovies, getWatchListMovies
+            watchListMovies, getWatchListMovies, addMovie, 
+            movieId, setMovieId
         }}>
             {props.children}
         </WatchListMovieContext.Provider>
