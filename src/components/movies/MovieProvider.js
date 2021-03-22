@@ -25,6 +25,7 @@ export const MovieProvider = (props) => {
             })
     }
 
+    //grabs the id and poster_path for AddMovie form
     const getSearchedMovieById = (id) => {
         return fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${tmdbAPI.apiKey}&language=en-US`)
             .then(res => res.json())

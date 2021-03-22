@@ -19,7 +19,6 @@ export const AddMovieForm = () => {
     const currentUserId =  parseInt(sessionStorage.getItem(userStorageKey))
     const history = useHistory()
     
-    const [isLoading, setIsLoading] = useState(true);
     const [moviePoster, setMoviePoster] = useState("")
     
     const [watchListMovie, setWatchListMovie] = useState({
@@ -43,10 +42,6 @@ export const AddMovieForm = () => {
     const handleSaveMovie = (event) => {
         event.preventDefault()
 
-        // if (parseInt(watchList.id) === 0) {
-        //     window.alert("Please complete the field")
-        // } else {
-
         addMovie({
             movieId: watchListMovie.movieId,
             watchListId: watchListMovie.watchListId,
@@ -62,6 +57,8 @@ export const AddMovieForm = () => {
         .then(getWatchListMovies)
     }, [])
 
+    /* use getSearchedMovieById to get selected value (movieId)
+    and change upon click if a new movie is selected */
     useEffect (() => {
         console.log(movieId)
         const newWatchListObj = { ...watchListMovie }
@@ -78,6 +75,7 @@ export const AddMovieForm = () => {
                 )}
     }, [movieId])
 
+    //second useEffect sets state for poster and changes upon new add click
     useEffect (() => {
        console.log(moviePoster) 
 
@@ -90,7 +88,8 @@ export const AddMovieForm = () => {
         
     }, [moviePoster])
 
-
+    /* returns watch lists, maps through multiple watch lists
+    and mapping through movie cards to appropriate watch list */
   return (
     <form className="addMovieForm">
         <fieldset>
@@ -115,7 +114,6 @@ export const AddMovieForm = () => {
             </div>
         </fieldset>
         <button className="btn btn-primary"
-        disabled={isLoading}
             onClick={handleSaveMovie}>Save Movie to Watch List
         </button>
     </form>

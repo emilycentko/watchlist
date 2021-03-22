@@ -9,12 +9,7 @@ export const MovieSearch = () => {
     const { searchMovie, filteredMovies, setFilteredMovies } = useContext(MovieContext)
     const { setMovieId } = useContext(WatchListMovieContext)
 
-    const [movie, setMovie] = useState({
-      movieId: 0,
-      poster_path: ""
-    })
-
-
+    //handles grabbing movieId value and setting new movieId state upon selection
     const handleControlledInputChange = (event) => {
       event.preventDefault()
 
@@ -26,6 +21,7 @@ export const MovieSearch = () => {
       setMovieId(selectedVal)
   }
   
+  // returns search for filtered movies & maps through filtered movies with button to add and grab id and properties from API
     return (
       <>
         <div className ="movie__search">Search for a movie:
