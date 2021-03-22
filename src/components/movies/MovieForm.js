@@ -11,23 +11,17 @@ import { UserContext } from "../users/UserProvider"
 
 export const AddMovieForm = () => {
 
-    const { addMovie } = useContext(MovieContext)
+    const { getSearchedMovieById } = useContext(MovieContext)
     const { watchLists, getWatchLists } = useContext(WatchListContext)
-    const { watchListMovies, getWatchListMovies } = useContext(WatchListMovieContext)
-    const { users, getUsers } = useContext(UserContext)
-    
-    // const [filteredMovies, setFilteredMovies] = useState([])
+    const { getWatchListMovies, movieId, addMovie } = useContext(WatchListMovieContext)
+    const { getUsers } = useContext(UserContext)
 
     const currentUserId =  parseInt(sessionStorage.getItem(userStorageKey))
     const history = useHistory()
     
     const [isLoading, setIsLoading] = useState(true);
-
-    const [movie, setMovie] = useState({})
-    const [watchList, setWatchList] = useState({
-        name: "",
-        userId: currentUserId
-    })
+    const [moviePoster, setMoviePoster] = useState("")
+    
     const [watchListMovie, setWatchListMovie] = useState({
         movieId: 0,
         watchListId: 0,
@@ -35,38 +29,66 @@ export const AddMovieForm = () => {
     })
 
     const handleControlledInputChange = (event) => {
-        const newMovie = { ...movie }
+        const newWatchListObj = { ...watchListMovie }
         let selectedVal = event.target.value
 
         if (event.target.id.includes("Id")) {
             selectedVal = parseInt(selectedVal)
         }
 
-        newMovie[event.target.id] = selectedVal
-        setMovie(newMovie)
+        newWatchListObj[event.target.id] = selectedVal
+        setWatchListMovie(newWatchListObj)
     }
 
     const handleSaveMovie = (event) => {
         event.preventDefault()
 
-        if (parseInt(watchList.id) === 0) {
-            window.alert("Please complete the field")
-        } else {
+        // if (parseInt(watchList.id) === 0) {
+        //     window.alert("Please complete the field")
+        // } else {
+
         addMovie({
-            // name: watchList.name,
             movieId: watchListMovie.movieId,
             watchListId: watchListMovie.watchListId,
             poster_path: watchListMovie.poster_path,
         })
         .then(() => history.push("/watchlists"))
-        }
+        
 }   
 
     useEffect(() => {
         getWatchLists()
         .then(getUsers)
-        .then (getWatchListMovies)
+        .then(getWatchListMovies)
     }, [])
+
+    useEffect (() => {
+        console.log(movieId)
+        const newWatchListObj = { ...watchListMovie }
+        const selectedVal = movieId
+        
+        newWatchListObj.movieId = selectedVal
+        console.log(newWatchListObj)
+        setWatchListMovie(newWatchListObj)
+        if (selectedVal !== 0) {
+            getSearchedMovieById(selectedVal)
+            .then(movieObj => {
+                if (movieObj.poster_path !== null) {
+                setMoviePoster(movieObj.poster_path)}}
+                )}
+    }, [movieId])
+
+    useEffect (() => {
+       console.log(moviePoster) 
+
+       const newWatchListObj = { ...watchListMovie }
+        const selectedVal = moviePoster
+        
+        newWatchListObj.poster_path = selectedVal
+        console.log(newWatchListObj)
+        setWatchListMovie(newWatchListObj)
+        
+    }, [moviePoster])
 
 
   return (
@@ -81,7 +103,7 @@ export const AddMovieForm = () => {
             <div className="form-group">
 
                 <label htmlFor="watchList">Choose a watch list:</label>
-                <select value ={watchList.id} id="watchListId" className="form-control" onChange={handleControlledInputChange}>
+                <select value ={watchListMovie.watchListId} id="watchListId" className="form-control" onChange={handleControlledInputChange}>
                 
                     <option value="0">Select a watch list</option>
                     {watchLists.filter(watchList => watchList.userId === currentUserId).map(watchList => (
@@ -93,7 +115,7 @@ export const AddMovieForm = () => {
             </div>
         </fieldset>
         <button className="btn btn-primary"
-        // disabled={isLoading}
+        disabled={isLoading}
             onClick={handleSaveMovie}>Save Movie to Watch List
         </button>
     </form>

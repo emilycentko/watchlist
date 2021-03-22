@@ -1,13 +1,13 @@
 import React, { useContext, useState } from "react"
 import { MovieContext } from "./MovieProvider"
-import { useHistory } from "react-router-dom"
+import { WatchListMovieContext } from "../watchlists/WatchListMovieProvider"
 
 //component responsible for searching a movie and displaying filtered movies with a button to add
 //called in MovieForm
 
 export const MovieSearch = () => {
-    const { movies, searchMovie, filteredMovies, setFilteredMovies } = useContext(MovieContext)
-    const history = useHistory()
+    const { searchMovie, filteredMovies, setFilteredMovies } = useContext(MovieContext)
+    const { setMovieId } = useContext(WatchListMovieContext)
 
     const [movie, setMovie] = useState({
       movieId: 0,
@@ -16,15 +16,14 @@ export const MovieSearch = () => {
 
 
     const handleControlledInputChange = (event) => {
-      const newMovie = { ...movie }
-      let selectedVal = event.target.value
+      event.preventDefault()
 
+      let selectedVal = event.target.value
       if (event.target.id.includes("Id")) {
         selectedVal  = parseInt(selectedVal )
     }
 
-      newMovie[event.target.id] = selectedVal
-      setMovie(newMovie)
+      setMovieId(selectedVal)
   }
   
     return (
@@ -43,13 +42,15 @@ export const MovieSearch = () => {
         </div>
         <div className="searched__movies">
               {filteredMovies.map(movie =>
+
               <div className="searched__movieContainer">
                 {movie.poster_path === null ? `No image available for ${movie.title}` :
                 <img className="filtered__moviePoster" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}></img>}
+
                   <label htmlFor="add"></label>
-                  <input type ="button" id={movie.id} className="add__movieButton"
+                  <button id="movieId" className="add__movieButton"
                     onClick={handleControlledInputChange}
-                    value="Add"/>
+                    value={movie.id}>Add</button>
               </div>
               )}
         </div>
