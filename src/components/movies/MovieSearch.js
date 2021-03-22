@@ -30,15 +30,17 @@ export const MovieSearch = () => {
                 searchMovie(event.target.value)
               } else {setFilteredMovies([])}
             }
+            
           }
             placeholder="Search for a movie... " />
         </div>
         <div className="searched__movies">
               {filteredMovies.map(movie =>
               <div className="searched__movieContainer">
-                <img className="filtered__moviePoster" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}></img>
+                {movie.poster_path === null ? `No image available for ${movie.title}` :
+                <img className="filtered__moviePoster" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}></img>}
                   <label htmlFor="add"></label>
-                  <input type ="button" id="movieId" className="add__movieButton"
+                  <input type ="button" id={movie.id} className="add__movieButton"
                     onClick={handleControlledInputChange}
                     value="Add"/>
               </div>

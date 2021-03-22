@@ -34,13 +34,13 @@ export const MovieProvider = (props) => {
     }
 
     //add a movie from the tmdb API and POST to local JSON watchlist
-    const addMovie = movieObj => {
-        return fetch("http://localhost:8088/watchLists?_embed=watchListMovies", {
+    const addMovie = movie => {
+        return fetch("http://localhost:8088/watchListMovies?_expand=watchList", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(movieObj)
+            body: JSON.stringify(movie)
             })
             .then(getMovies)
     }

@@ -24,6 +24,7 @@ export const AddMovieForm = () => {
 
     const [movie, setMovie] = useState({})
     const [watchList, setWatchList] = useState({})
+    const [watchListMovie, setWatchListMovie] = useState({})
 
     const handleControlledInputChange = (event) => {
         const newMovie = { ...movie }
@@ -36,11 +37,12 @@ export const AddMovieForm = () => {
     const handleSaveMovie = () => {
         
         addMovie({
-            movieId: movie.id,
-            watchListId: watchList.id,
-            poster: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-            userId: currentUserId,
-            })
+            name: watchList.name,
+            movieId: watchListMovie.movieId,
+            watchListId: watchListMovie.watchListId,
+            poster: movie.poster_path,
+            userId: currentUserId
+        })
         .then(() => history.push("/watchlists"))
     }
 
@@ -67,9 +69,9 @@ export const AddMovieForm = () => {
                 <select value ={watchList.id} id="watchListId" className="form-control" onChange={handleControlledInputChange}>
                 
                     <option value="0">Select a watch list</option>
-                    {watchLists.map(wl => (
-                        <option key={wl.id} value={wl.id}>
-                            {wl.name}
+                    {watchLists.filter(watchList => watchList.userId === currentUserId).map(watchList => (
+                        <option key={watchList.id} value={watchList.id}>
+                            {watchList.name}
                         </option>
                     ))}
                 </select>
