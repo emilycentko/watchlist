@@ -7,14 +7,21 @@ import { useHistory } from "react-router-dom"
 
 export const MovieSearch = () => {
     const { movies, searchMovie, filteredMovies, setFilteredMovies } = useContext(MovieContext)
-
-    const [movie, setMovie] = useState({})
-
     const history = useHistory()
+
+    const [movie, setMovie] = useState({
+      movieId: 0,
+      poster_path: ""
+    })
+
 
     const handleControlledInputChange = (event) => {
       const newMovie = { ...movie }
       let selectedVal = event.target.value
+
+      if (event.target.id.includes("Id")) {
+        selectedVal  = parseInt(selectedVal )
+    }
 
       newMovie[event.target.id] = selectedVal
       setMovie(newMovie)

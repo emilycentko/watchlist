@@ -11,7 +11,7 @@ import { UserContext } from "../users/UserProvider"
 
 export const AddMovieForm = () => {
 
-    const { addMovie, getMovies } = useContext(MovieContext)
+    const { addMovie } = useContext(MovieContext)
     const { watchLists, getWatchLists } = useContext(WatchListContext)
     const { watchListMovies, getWatchListMovies } = useContext(WatchListMovieContext)
     const { users, getUsers } = useContext(UserContext)
@@ -20,37 +20,52 @@ export const AddMovieForm = () => {
 
     const currentUserId =  parseInt(sessionStorage.getItem(userStorageKey))
     const history = useHistory()
-
+    
+    const [isLoading, setIsLoading] = useState(true);
 
     const [movie, setMovie] = useState({})
-    const [watchList, setWatchList] = useState({})
-    const [watchListMovie, setWatchListMovie] = useState({})
+    const [watchList, setWatchList] = useState({
+        name: "",
+        userId: currentUserId
+    })
+    const [watchListMovie, setWatchListMovie] = useState({
+        movieId: 0,
+        watchListId: 0,
+        poster_path: ""
+    })
 
     const handleControlledInputChange = (event) => {
         const newMovie = { ...movie }
         let selectedVal = event.target.value
 
+        if (event.target.id.includes("Id")) {
+            selectedVal = parseInt(selectedVal)
+        }
+
         newMovie[event.target.id] = selectedVal
         setMovie(newMovie)
     }
 
-    const handleSaveMovie = () => {
-        
+    const handleSaveMovie = (event) => {
+        event.preventDefault()
+
+        if (parseInt(watchList.id) === 0) {
+            window.alert("Please complete the field")
+        } else {
         addMovie({
-            name: watchList.name,
+            // name: watchList.name,
             movieId: watchListMovie.movieId,
             watchListId: watchListMovie.watchListId,
-            poster: movie.poster_path,
-            userId: currentUserId
+            poster_path: watchListMovie.poster_path,
         })
         .then(() => history.push("/watchlists"))
-    }
+        }
+}   
 
     useEffect(() => {
         getWatchLists()
         .then(getUsers)
         .then (getWatchListMovies)
-        .then(getMovies)
     }, [])
 
 
@@ -78,10 +93,8 @@ export const AddMovieForm = () => {
             </div>
         </fieldset>
         <button className="btn btn-primary"
-            onClick={event => {
-                event.preventDefault()
-                handleSaveMovie()
-            }}>Save Movie to Watch List
+        // disabled={isLoading}
+            onClick={handleSaveMovie}>Save Movie to Watch List
         </button>
     </form>
   )

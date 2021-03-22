@@ -1,5 +1,6 @@
-import React, { useState, createContext } from "react"
+import React, { useState, createContext, useContext } from "react"
 import { tmdbAPI } from "../auth/Settings.js"
+import { WatchListMovieContext } from "../watchlists/WatchListMovieProvider"
 
 //context to store movies and be used by the components that need this data
 export const MovieContext = createContext()
@@ -10,18 +11,11 @@ export const MovieProvider = (props) => {
     // useState hook to hold and set the array of movies
     // define a variable that holds the state of movies and the setMovies function to update it
     const [movies, setMovies] = useState([])
+    const { watchListMovies, getWatchListMovies } = useContext(WatchListMovieContext)
     
     //search variable and state
     const [filteredMovies, setFilteredMovies] = useState([])
     const [searchTerms, setSearchTerms] = useState("")
-
-
-    //get movies from local API in JSON added to watchlist
-    const getMovies = () => {
-        return fetch("http://localhost:8088/watchLists?_embed=watchListMovies")
-            .then(res => res.json())
-            .then(setMovies)
-    }
 
     //search for a movie provided by tmdb API - documentation for search query by title
     const searchMovie = (searchTitle) => {
@@ -42,7 +36,7 @@ export const MovieProvider = (props) => {
             },
             body: JSON.stringify(movie)
             })
-            .then(getMovies)
+            .then(getWatchListMovies)
     }
 
     const getSearchedMovieById = (id) => {
@@ -57,7 +51,7 @@ export const MovieProvider = (props) => {
     */
     return (
         <MovieContext.Provider value={{
-            movies, getMovies, searchMovie, addMovie, getSearchedMovieById,
+            movies, searchMovie, addMovie, getSearchedMovieById,
             filteredMovies, setFilteredMovies,
             searchTerms, setSearchTerms
         }}>
