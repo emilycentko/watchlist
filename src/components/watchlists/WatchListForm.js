@@ -12,8 +12,6 @@ import "./WatchList.css"
 export const WatchListForm = () => {
 
     const { addWatchList, getWatchListById, editWatchList } = useContext(WatchListContext)
-    // const { watchListMovies, getWatchListMovies } = useContext(WatchListMovieContext)
-    // const { users, getUsers } = useContext(UserContext)
 
     const currentUserId =  parseInt(sessionStorage.getItem(userStorageKey))
 

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
-import { useHistory, useParams } from "react-router-dom"
+import { useHistory} from "react-router-dom"
 import { MovieCard } from "../movies/Movie"
 import { WatchListContext } from "./WatchListProvider"
 import { WatchListMovieContext } from "./WatchListMovieProvider"
@@ -14,12 +14,9 @@ export const WatchList = () => {
     const { getWatchListMovies} = useContext(WatchListMovieContext)
     const { getUsers } = useContext(UserContext)
 
-    const [watchList, setWatchLists] = useState({})
-
     const userId = parseInt(sessionStorage.getItem(userStorageKey))
   
     const history = useHistory()
-    const {watchListId} = useParams()
 
     
     useEffect(() => {
@@ -59,7 +56,7 @@ export const WatchList = () => {
                                     Delete WatchList
                                 </button>
 
-                                {watchList.watchListMovies.map(movie => <MovieCard key={movie.id} movie={movie} />)}
+                                {watchList.watchListMovies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
                             </div>
                 })
                 }

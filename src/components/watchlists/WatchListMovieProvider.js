@@ -25,12 +25,19 @@ export const WatchListMovieProvider = (props) => {
             .then(getWatchListMovies)
     }
 
+    const removeMovie = id => {
+        return fetch(`http://localhost:8088/watchListMovies/${id}`, {
+            method: "DELETE"
+        })
+        .then(getWatchListMovies)
+    }
+
     /*return a context provider, which has the `watchlistmovies` state & the
     function keys to allow any child elements to access them
     */
     return (
         <WatchListMovieContext.Provider value={{
-            watchListMovies, getWatchListMovies, addMovie, 
+            watchListMovies, getWatchListMovies, addMovie, removeMovie,
             movieId, setMovieId
         }}>
             {props.children}
