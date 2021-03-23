@@ -8,6 +8,7 @@ import { WatchListMovieProvider } from "./watchlists/WatchListMovieProvider"
 import { AddMovieForm } from "./movies/MovieForm"
 import { UserProvider } from "./users/UserProvider"
 import { WatchListForm } from "./watchlists/WatchListForm"
+import { MovieDetails } from "./movies/MovieDetails"
 
 export const ApplicationViews = () => {
     return (
@@ -32,6 +33,10 @@ export const ApplicationViews = () => {
 
                             <Route path="/watchlists/edit/:watchListId(\d+)">
                                 <WatchListForm />
+                            </Route>
+
+                            <Route path="/watchlists/moviedetails/:movieId(\d+)">
+                                <MovieDetails />
                             </Route>
                         </WatchListProvider>
                     </MovieProvider>
