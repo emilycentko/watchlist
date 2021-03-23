@@ -7,10 +7,12 @@ import "./Movie.css"
 export const MovieCard = ( {movie} ) => {
     
     console.log(movie.movieId)
+    console.log(movie)
+    console.log("movie dot id", movie.id)
 
     return (
         <section className="movie__card">
-            <Link to={`/watchlists/moviedetails/${movie.movieId}`}>
+            <Link to={`/watchlists/moviedetails/${movie.movieId}/${movie.id}`}>
                 <img className="movie__poster" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/>
             </Link>
             

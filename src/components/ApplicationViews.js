@@ -35,7 +35,7 @@ export const ApplicationViews = () => {
                                 <WatchListForm />
                             </Route>
 
-                            <Route path="/watchlists/moviedetails/:movieId(\d+)">
+                            <Route path="/watchlists/moviedetails/:movieId(\d+)/:id(\d+)">
                                 <MovieDetails />
                             </Route>
                         </WatchListProvider>

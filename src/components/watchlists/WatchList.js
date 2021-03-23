@@ -56,7 +56,7 @@ export const WatchList = () => {
                                     Delete WatchList
                                 </button>
 
-                                {watchList.watchListMovies.map(movie => <MovieCard key={movie.id} movie={movie} />)}
+                                {watchList.watchListMovies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
                             </div>
                 })
                 }
