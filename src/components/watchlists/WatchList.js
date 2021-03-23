@@ -11,15 +11,21 @@ import "./WatchList.css"
 
 export const WatchList = () => {
 
-    const { watchLists, getWatchLists } = useContext(WatchListContext)
+    const { watchLists, getWatchLists, deleteWatchList } = useContext(WatchListContext)
     const { getWatchListMovies } = useContext(WatchListMovieContext)
     const { getUsers } = useContext(UserContext)
+
+    const [watchList, setWatchList] = useState({})
 
     const userId = parseInt(sessionStorage.getItem(userStorageKey))
   
     const history = useHistory()
 
-    
+    const handleDelete = () => {
+        deleteWatchList(watchList.id)
+          
+      }
+
     useEffect(() => {
         getUsers()
         .then(getWatchListMovies)
@@ -49,7 +55,15 @@ export const WatchList = () => {
                                 <h3 className="watchlist__name">{watchList.name}</h3>
                                 <button onClick={() => {
                                     history.push(`/watchlists/edit/${watchList.id}`)
-                                    }}>Edit WatchList Name</button>
+                                    }}>Edit WatchList Name
+                                </button>
+
+                                <button onClick={(watchList) => {
+                                    setWatchList()
+                                        .then(handleDelete())
+                                }}>Delete WatchList
+                                </button>
+
                                     {watchList.watchListMovies.map(movie => <MovieCard key={movie.id} movie={movie} />)}
                             </div>
                 })
