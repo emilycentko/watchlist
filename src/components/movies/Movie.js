@@ -9,10 +9,9 @@ export const MovieCard = ( {movie} ) => {
     return (
         <section className="movie__card">
             {/* <Link to={`/watchlists/moviedetails/${movie.id}`}>
-                { movie.poster_path }
             </Link> */}
             
-            <img className="movie__poster" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/>
+                <img className="movie__poster" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/>
             
         </section>
     )

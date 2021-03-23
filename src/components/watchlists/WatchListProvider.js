@@ -39,8 +39,8 @@ export const WatchListProvider = (props) => {
           .then(getWatchLists)
       }
 
-    const deleteWatchList = watchListId => {
-        return fetch(`http://localhost:8088/watchLists/${watchListId}`, {
+    const deleteWatchList = id => {
+        return fetch(`http://localhost:8088/watchLists/${id}`, {
             method: "DELETE"
         })
         .then(getWatchLists)

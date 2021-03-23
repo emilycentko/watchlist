@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router-dom"
-import { MovieContext } from "../movies/MovieProvider"
 import { MovieCard } from "../movies/Movie"
 import { WatchListContext } from "./WatchListProvider"
 import { WatchListMovieContext } from "./WatchListMovieProvider"
@@ -11,14 +10,16 @@ import "./WatchList.css"
 
 export const WatchList = () => {
 
-    const { watchLists, getWatchLists, deleteWatchList } = useContext(WatchListContext)
-    const { getWatchListMovies, deleteWatchListMovie } = useContext(WatchListMovieContext)
+    const { watchLists, getWatchLists, deleteWatchList, getWatchListById } = useContext(WatchListContext)
+    const { getWatchListMovies} = useContext(WatchListMovieContext)
     const { getUsers } = useContext(UserContext)
 
+    const [watchList, setWatchLists] = useState({})
 
     const userId = parseInt(sessionStorage.getItem(userStorageKey))
   
     const history = useHistory()
+    const {watchListId} = useParams()
 
     
     useEffect(() => {
@@ -26,10 +27,17 @@ export const WatchList = () => {
         .then(getWatchListMovies)
         .then(getWatchLists)
     }, [])
+
+    // useEffect(() => {
+    //     console.log("useEffect", watchListId)
+    //     getWatchListById(watchListId)
+    //     .then((response) => {
+    //       setWatchLists(response)
+    //     })
+    //     }, [])
     
-    const handleDelete = (watchListMovie, watchList) => {
-        deleteWatchListMovie(watchListMovie.watchListId)
-        .then(deleteWatchList(watchList.id))
+    const handleDelete = (watchList) => {
+            deleteWatchList(watchList.id)
         }
 
     /* getWatchLists fetch call for watch lists embeds the join table
@@ -48,7 +56,7 @@ export const WatchList = () => {
             <div className="watchlist__list">
 
                 {watchLists.filter(watchList => watchList.userId === userId).map(watchList => {
-                    let watchListId = watchList.id
+                   
 
                     return <div className ="watchlist">
                                 <h3 className="watchlist__name">{watchList.name}</h3>
@@ -58,7 +66,7 @@ export const WatchList = () => {
                                 </button>
 
                                 <button onClick=
-                                    {handleDelete (watchListId)}
+                                    {handleDelete}
                                 >Delete WatchList
                                 </button>
 
