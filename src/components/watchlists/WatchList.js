@@ -28,17 +28,6 @@ export const WatchList = () => {
         .then(getWatchLists)
     }, [])
 
-    // useEffect(() => {
-    //     console.log("useEffect", watchListId)
-    //     getWatchListById(watchListId)
-    //     .then((response) => {
-    //       setWatchLists(response)
-    //     })
-    //     }, [])
-    
-    const handleDelete = (watchList) => {
-            deleteWatchList(watchList.id)
-        }
 
     /* getWatchLists fetch call for watch lists embeds the join table
     watchListMovies, which contains array of movies within that watch list,
@@ -65,12 +54,12 @@ export const WatchList = () => {
                                     }}>Edit WatchList Name
                                 </button>
 
-                                <button onClick=
-                                    {handleDelete}
-                                >Delete WatchList
+                                <button onClick= {() => 
+                                    deleteWatchList(watchList.id)}>
+                                    Delete WatchList
                                 </button>
 
-                                    {watchList.watchListMovies.map(movie => <MovieCard key={movie.id} movie={movie} />)}
+                                {watchList.watchListMovies.map(movie => <MovieCard key={movie.id} movie={movie} />)}
                             </div>
                 })
                 }
