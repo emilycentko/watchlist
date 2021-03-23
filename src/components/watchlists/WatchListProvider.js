@@ -40,7 +40,7 @@ export const WatchListProvider = (props) => {
       }
 
     const deleteWatchList = watchListId => {
-        return fetch(`http://localhost:8088/watchLists/${watchListId}?_embed=watchListMovies`, {
+        return fetch(`http://localhost:8088/watchLists/${watchListId}`, {
             method: "DELETE"
         })
         .then(getWatchLists)
