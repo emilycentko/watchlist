@@ -9,7 +9,6 @@ export const MovieDetails = () => {
     const { removeMovie } = useContext(WatchListMovieContext)
   
     const [movie, setMovies] = useState({})
-    const [watchListMovie] = useState({})
   
     const {movieId} = useParams()
     const {id} = useParams()
@@ -23,12 +22,6 @@ export const MovieDetails = () => {
         })
         }, [])
 
-    // const handleRemove = () => {
-    //     removeMovie(movie.id)
-    //         .then(() => {
-    //         history.push("/watchlists")
-    //     })
-    // }
     
     const year = new Date(`${movie.release_date}`)
     console.log(movieId)
@@ -40,6 +33,7 @@ export const MovieDetails = () => {
             <div>{year.getFullYear()}</div>
             <div>{movie.runtime} minutes</div>
             <div>{movie.overview}</div>
+            <div>{movie.genres?.name}</div>
     
             <button onClick={() => {
                 removeMovie(id)

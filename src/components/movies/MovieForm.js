@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom'
 import { MovieSearch } from "./MovieSearch"
 import { userStorageKey } from "../auth/authSettings"
 import { UserContext } from "../users/UserProvider"
+import "./Movie.css"
 
 // component responsible for searching and adding a movie in a form
 
@@ -39,6 +40,7 @@ export const AddMovieForm = () => {
         setWatchListMovie(newWatchListObj)
     }
 
+
     const handleSaveMovie = (event) => {
         event.preventDefault()
 
@@ -49,7 +51,7 @@ export const AddMovieForm = () => {
         })
         .then(() => history.push("/watchlists"))
         
-}   
+    }   
 
     useEffect(() => {
         getWatchLists()

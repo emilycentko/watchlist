@@ -45,17 +45,21 @@ export const WatchList = () => {
                    
 
                     return <div className ="watchlist">
-                                <h3 className="watchlist__name">{watchList.name}</h3>
-                                <button onClick={() => {
-                                    history.push(`/watchlists/edit/${watchList.id}`)
-                                    }}>Edit WatchList Name
-                                </button>
+                                <div>
+                                    <h3 className="watchlist__name">{watchList.name}</h3>
+                                    <div className="watchlist__buttons">
+                                        <button onClick={() => {
+                                            history.push(`/watchlists/edit/${watchList.id}`)
+                                            }}>Edit WatchList Name
+                                        </button>
 
-                                <button onClick= {() => 
-                                    deleteWatchList(watchList.id)}>
-                                    Delete WatchList
-                                </button>
-
+                                        <button onClick= {() => 
+                                            deleteWatchList(watchList.id)}>
+                                            Delete WatchList
+                                        </button>
+                                    </div>
+                                </div>
+                            
                                 {watchList.watchListMovies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
                             </div>
                 })

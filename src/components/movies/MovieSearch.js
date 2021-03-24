@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useEffect } from "react"
 import { MovieContext } from "./MovieProvider"
 import { WatchListMovieContext } from "../watchlists/WatchListMovieProvider"
 
@@ -7,7 +7,7 @@ import { WatchListMovieContext } from "../watchlists/WatchListMovieProvider"
 
 export const MovieSearch = () => {
     const { searchMovie, filteredMovies, setFilteredMovies } = useContext(MovieContext)
-    const { setMovieId } = useContext(WatchListMovieContext)
+    const { movieId, setMovieId } = useContext(WatchListMovieContext)
 
     //handles grabbing movieId value and setting new movieId state upon selection
     const handleControlledInputChange = (event) => {
@@ -20,6 +20,10 @@ export const MovieSearch = () => {
 
       setMovieId(selectedVal)
   }
+
+    // useEffect(() => {
+    //   setFilteredMovies([])
+    // }, [movieId])
   
   // returns search for filtered movies & maps through filtered movies with button to add and grab id and properties from API
     return (
@@ -44,12 +48,26 @@ export const MovieSearch = () => {
                 <img className="filtered__moviePoster" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}></img>}
 
                   <label htmlFor="add"></label>
-                  <button id="movieId" className="add__movieButton"
-                    onClick={handleControlledInputChange}
-                    value={movie.id}>Add</button>
+                  <button id="movieId" className="add__movieButton" value={movie.id}
+                    onClick={
+                       
+                      handleControlledInputChange
+                       
+                    }>+
+                  </button>
+
               </div>
               )}
         </div>
       </>
     )
   }
+
+  // <button id="movieId" className="add__movieButton" value={movie.id}
+  //                   onClick={() => {
+                       
+  //                     handleControlledInputChange()
+  //                       .then(() =>
+  //                       setFilteredMovies([]))
+  //             }}>Add
+  //                 </button>
