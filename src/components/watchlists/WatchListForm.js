@@ -1,13 +1,10 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from 'react-router-dom';
-// import { MovieContext } from "../movies/MovieProvider"
 import { WatchListContext } from "./WatchListProvider"
-// import { WatchListMovieContext } from "./WatchListMovieProvider"
 import { userStorageKey } from "../auth/authSettings";
-// import { UserContext } from "../users/UserProvider"
 import "./WatchList.css"
 
-//responsible for both adding a new watch list and editing an existing watch list title
+// Component responsible for both adding a new watch list and editing an existing watch list title
 
 export const WatchListForm = () => {
 
@@ -15,7 +12,7 @@ export const WatchListForm = () => {
 
     const currentUserId =  parseInt(sessionStorage.getItem(userStorageKey))
 
-    // define initial state of form inputs
+    // Define initial state of form inputs
     const [watchList, setWatchList] = useState({
         name: "",
         userId: currentUserId
@@ -61,7 +58,7 @@ export const WatchListForm = () => {
         }
       }
 
-      /* Determine if this is an edit based on watchListId in the URL.
+      /* Determine if this is an edit based on watchListId params in the URL.
         If true, invoke getWatchListById and then setWatchList state. */
       useEffect(() => {
         if (watchListId) {
@@ -75,6 +72,7 @@ export const WatchListForm = () => {
       }
   }, [])
 
+  // Form to edit watch list name
   return (
     <form className="watchListForm">
         <h2 className="watchListForm__title">{watchListId ? "Edit WatchList" : "Add New WatchList"}</h2>

@@ -2,13 +2,11 @@ import React from "react"
 import { Link } from "react-router-dom"
 import "./Movie.css"
 
-// responsible for representing HTML rendering of ONE movie on the DOM
+/* Responsible for representing HTML rendering of
+ONE movie on the DOM under current user's watch list
+and upon click --> MovieDetails.js */
 
 export const MovieCard = ( {movie} ) => {
-    
-    console.log(movie.movieId)
-    console.log(movie)
-    console.log("movie dot id", movie.id)
 
     return (
         <section className="movie__card">
