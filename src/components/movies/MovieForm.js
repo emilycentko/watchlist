@@ -44,13 +44,19 @@ export const AddMovieForm = () => {
     const handleSaveMovie = (event) => {
         event.preventDefault()
 
+
+        if (watchListMovie.watchListId === 0 || watchListMovie.movieId === 0) {
+            window.alert("Please select both fields")
+        } else {
+            
+
         addMovie({
             movieId: watchListMovie.movieId,
             watchListId: watchListMovie.watchListId,
             poster_path: watchListMovie.poster_path,
         })
         .then(() => history.push("/watchlists"))
-        
+        }
     }   
 
     useEffect(() => {
@@ -116,7 +122,9 @@ export const AddMovieForm = () => {
             </div>
         </fieldset>
         <button className="btn btn-primary"
-            onClick={handleSaveMovie}>Save Movie to Watch List
+        
+            onClick={handleSaveMovie}>
+            Save Movie to Watch List
         </button>
     </form>
   )

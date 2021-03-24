@@ -29,14 +29,6 @@
     opacity: 1;
 }
 
-.filtered__moviePoster:hover {
-    opacity: 1;
-}
-
-.filtered__moviePoster {
-    opacity: 0.75;
-}
-
 fieldset {
     border: none;
 }
