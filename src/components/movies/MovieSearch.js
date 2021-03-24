@@ -1,15 +1,16 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useEffect } from "react"
 import { MovieContext } from "./MovieProvider"
 import { WatchListMovieContext } from "../watchlists/WatchListMovieProvider"
 
-//component responsible for searching a movie and displaying filtered movies with a button to add
-//called in MovieForm
+/* Component responsible for 1. searching a movie and displaying
+filtered movies 2. with a button to add movie to a WatchListForm.js.
+Function called in MovieForm */
 
 export const MovieSearch = () => {
     const { searchMovie, filteredMovies, setFilteredMovies } = useContext(MovieContext)
     const { setMovieId } = useContext(WatchListMovieContext)
 
-    //handles grabbing movieId value and setting new movieId state upon selection
+    // Handles grabbing movieId value and setting new movieId state upon selection
     const handleControlledInputChange = (event) => {
       event.preventDefault()
 
@@ -18,10 +19,12 @@ export const MovieSearch = () => {
         selectedVal  = parseInt(selectedVal )
     }
 
+      // Update state to THAT selected movie by tmdb id
       setMovieId(selectedVal)
   }
   
-  // returns search for filtered movies & maps through filtered movies with button to add and grab id and properties from API
+  /* 1. Returns search for filtered movies & maps through filtered movie posters,
+  each with a button to add and grab id and its properties from tmdb */
     return (
       <>
         <div className ="movie__search">Search for a movie:
@@ -44,9 +47,11 @@ export const MovieSearch = () => {
                 <img className="filtered__moviePoster" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}></img>}
 
                   <label htmlFor="add"></label>
-                  <button id="movieId" className="add__movieButton"
-                    onClick={handleControlledInputChange}
-                    value={movie.id}>Add</button>
+                  <button id="movieId" className="add__movieButton" value={movie.id}
+                    onClick=
+                      {handleControlledInputChange}
+                    >+
+                  </button>
               </div>
               )}
         </div>

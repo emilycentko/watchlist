@@ -2,10 +2,11 @@ import React, { useState, createContext } from "react"
 
 export const WatchListMovieContext = createContext()
 
+// Provider for join table/relationship between movies and watch lists
+
 export const WatchListMovieProvider = (props) => {
     const [watchListMovies, setWatchListMovies] = useState([])
     const [movieId, setMovieId] = useState(0)
-
 
     const getWatchListMovies = () => {
         return fetch("http://localhost:8088/watchListMovies")
@@ -32,9 +33,8 @@ export const WatchListMovieProvider = (props) => {
         .then(getWatchListMovies)
     }
 
-    /*return a context provider, which has the `watchlistmovies` state & the
-    function keys to allow any child elements to access them
-    */
+    /* Return a context provider, which has the `watchListMovies` state & the
+    function keys to allow any child elements to access them */
     return (
         <WatchListMovieContext.Provider value={{
             watchListMovies, getWatchListMovies, addMovie, removeMovie,

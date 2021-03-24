@@ -11,3 +11,24 @@
 .filtered__moviePoster {
     height: 200px;
 }
+
+.add__movieButton {
+    width: 30px;
+    opacity: 0.25;
+}
+
+.add__movieButton:hover {
+    background-color: navy;
+    color: white;
+    opacity: 1;
+}
+
+.add__movieButton:focus {
+    background-color: navy;
+    color: white;
+    opacity: 1;
+}
+
+fieldset {
+    border: none;
+}

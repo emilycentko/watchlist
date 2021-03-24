@@ -21,3 +21,8 @@
 button {
   height: 30px;
 }
+
+.watchlist__buttons {
+  display: flex;
+  flex-direction: column;
+}

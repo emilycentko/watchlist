@@ -5,7 +5,6 @@ export const WatchListContext = createContext()
 export const WatchListProvider = (props) => {
     const [watchLists, setWatchLists] = useState([])
 
-
     const getWatchLists = () => {
         return fetch("http://localhost:8088/watchLists?_embed=watchListMovies")
             .then(res => res.json())

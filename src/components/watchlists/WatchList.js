@@ -7,10 +7,9 @@ import { userStorageKey } from "../auth/authSettings";
 import { UserContext } from "../users/UserProvider"
 import "./WatchList.css"
 
-
 export const WatchList = () => {
 
-    const { watchLists, getWatchLists, deleteWatchList, getWatchListById } = useContext(WatchListContext)
+    const { watchLists, getWatchLists, deleteWatchList } = useContext(WatchListContext)
     const { getWatchListMovies} = useContext(WatchListMovieContext)
     const { getUsers } = useContext(UserContext)
 
@@ -18,11 +17,10 @@ export const WatchList = () => {
   
     const history = useHistory()
 
-    
     useEffect(() => {
         getUsers()
-        .then(getWatchListMovies)
         .then(getWatchLists)
+        .then(getWatchListMovies)
     }, [])
 
 
@@ -32,6 +30,10 @@ export const WatchList = () => {
     
     Return maps over watchLists and grabs the data associated with all movies
     in each watch list from that join table */
+
+    // Then maps over MovieCard from Movie.js to supply its key/value
+
+    // Includes edit watch list name button & delete button
 
     return (
 
@@ -45,17 +47,22 @@ export const WatchList = () => {
                    
 
                     return <div className ="watchlist">
-                                <h3 className="watchlist__name">{watchList.name}</h3>
-                                <button onClick={() => {
-                                    history.push(`/watchlists/edit/${watchList.id}`)
-                                    }}>Edit WatchList Name
-                                </button>
+                                <div>
+                                    <h3 className="watchlist__name">{watchList.name}</h3>
 
-                                <button onClick= {() => 
-                                    deleteWatchList(watchList.id)}>
-                                    Delete WatchList
-                                </button>
+                                    <div className="watchlist__buttons">
+                                        <button onClick={() => {
+                                            history.push(`/watchlists/edit/${watchList.id}`)
+                                            }}>Edit WatchList Name
+                                        </button>
 
+                                        <button onClick= {() => 
+                                            deleteWatchList(watchList.id)}>
+                                            Delete WatchList
+                                        </button>
+                                    </div>
+                                </div>
+                            
                                 {watchList.watchListMovies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
                             </div>
                 })
