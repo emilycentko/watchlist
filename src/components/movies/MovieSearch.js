@@ -23,7 +23,7 @@ export const MovieSearch = () => {
       setMovieId(selectedVal)
   }
   
-  /* 1Returns search for filtered movies & maps through filtered movie posters,
+  /* 1. Returns search for filtered movies & maps through filtered movie posters,
   each with a button to add and grab id and its properties from tmdb */
     return (
       <>

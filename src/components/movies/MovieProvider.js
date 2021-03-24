@@ -20,7 +20,6 @@ export const MovieProvider = (props) => {
         return fetch(`${tmdbAPI.baseURL}${tmdbAPI.apiKey}&query=${searchTitle}`)
             .then(res => res.json())
             .then(parsedResponse => {
-                console.log(parsedResponse.results)
                 setFilteredMovies(parsedResponse.results)
             })
     }
