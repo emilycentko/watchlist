@@ -2,11 +2,24 @@ import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from 'react-router-dom';
 import { WatchListContext } from "./WatchListProvider"
 import { userStorageKey } from "../auth/authSettings";
+import { makeStyles } from '@material-ui/core/styles';
 import "./WatchList.css"
+import TextField from '@material-ui/core/TextField';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+  },
+}));
 
 // Component responsible for both adding a new watch list and editing an existing watch list title
 
 export const WatchListForm = () => {
+
+    const classes = useStyles();
 
     const { addWatchList, getWatchListById, editWatchList } = useContext(WatchListContext)
 
@@ -74,12 +87,13 @@ export const WatchListForm = () => {
 
   // Form to edit watch list name
   return (
-    <form className="watchListForm">
+    <form className="watchListForm" className={classes.root} noValidate autoComplete="off">
         <h2 className="watchListForm__title">{watchListId ? "Edit WatchList" : "Add New WatchList"}</h2>
         <fieldset>
             <div className="form-group">
                 <label htmlFor="name">WatchList name:</label>
-                <input type="text" id="name" required autoFocus className="form-control" placeholder="WatchList name"
+                <TextField id="name" label="WatchList Name" variant="outlined"
+                // <input type="text" id="name" required autoFocus className="form-control" placeholder="WatchList name"
                 onChange={handleControlledInputChange}
                 value={watchList.name}/>
             </div>
