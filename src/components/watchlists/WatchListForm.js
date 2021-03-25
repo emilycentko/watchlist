@@ -3,14 +3,15 @@ import { useHistory, useParams } from 'react-router-dom';
 import { WatchListContext } from "./WatchListProvider"
 import { userStorageKey } from "../auth/authSettings";
 import { makeStyles } from '@material-ui/core/styles';
-import "./WatchList.css"
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import "./WatchList.css"
 
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
       margin: theme.spacing(1),
-      width: '25ch',
+      width: '40ch',
     },
   },
 }));
@@ -88,24 +89,25 @@ export const WatchListForm = () => {
   // Form to edit watch list name
   return (
     <form className="watchListForm" className={classes.root} noValidate autoComplete="off">
-        <h2 className="watchListForm__title">{watchListId ? "Edit WatchList" : "Add New WatchList"}</h2>
+        <h2 className="watchListForm__title">{watchListId ? "Edit WatchList Name" : "Add New WatchList"}</h2>
         <fieldset>
             <div className="form-group">
-                <label htmlFor="name">WatchList name:</label>
-                <TextField id="name" label="WatchList Name" variant="outlined"
+                <TextField id="name" label="WatchList Name" variant="outlined" 
                 // <input type="text" id="name" required autoFocus className="form-control" placeholder="WatchList name"
                 onChange={handleControlledInputChange}
                 value={watchList.name}/>
             </div>
         </fieldset>
 
-        <button className="btn btn-primary"
+        <Button variant="contained" color="secondary"
+        className="btn btn-primary"
             disabled={isLoading}
             onClick={event => {
                 event.preventDefault()
                 handleSaveWatchList()
             }}>
-            {watchListId ? "Save WatchList" : "Add New WatchList"}</button>
+            {watchListId ? "Save WatchList" : "Add New WatchList"}
+          </Button>
     </form>
 )
 

@@ -25,3 +25,8 @@ button {
   display: flex;
   flex-direction: column;
 }
+
+.watchListForm {
+  margin: auto;
+  position: relative; 
+}
