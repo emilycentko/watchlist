@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from "react"
 import { MovieContext } from "./MovieProvider"
 import { WatchListMovieContext } from "../watchlists/WatchListMovieProvider"
+import TextField from '@material-ui/core/TextField'
+import AddIcon from '@material-ui/icons/Add';
 
 /* Component responsible for 1. searching a movie and displaying
 filtered movies 2. with a button to add movie to a WatchListForm.js.
@@ -27,8 +29,8 @@ export const MovieSearch = () => {
   each with a button to add and grab id and its properties from tmdb */
     return (
       <>
-        <div className ="movie__search">Search for a movie:
-          <input type="text"
+        <div className ="movie__search">Add a movie:
+          <TextField id="standard-basic" label="Search for a movie"
             className="input--wide"
             onKeyUp={(event) => {
               if (event.target.value !== "") {

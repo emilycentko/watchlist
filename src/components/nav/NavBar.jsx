@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    fontFamily: "Nunito Sans",
     color: "white",
   },
   navLinks: {
@@ -39,7 +38,7 @@ export const ButtonAppBar = () => {
             <MenuIcon />
           </IconButton>
 
-          <Typography variant="h6" className={classes.navLinks} to="/" component={ Link } color="inherit" underline="inherit">
+          <Typography variant="h6" className={classes.navLinks} to="/" component={ Link } color="inherit" underline="inherit" fontFamily="ITC Machine Bold">
             ADD MOVIES
           </Typography>
           <Typography variant="h6" className={classes.navLinks} to="/watchlists" component={ Link } color="inherit" underline="inherit">

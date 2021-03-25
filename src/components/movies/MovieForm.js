@@ -7,6 +7,18 @@ import { MovieSearch } from "./MovieSearch"
 import { userStorageKey } from "../auth/authSettings"
 import { UserContext } from "../users/UserProvider"
 import "./Movie.css"
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+      justifyContent: 'center'
+    },
+  },
+}));
 
 // Component responsible for adding a movie to an existing watch list in a form
 
@@ -19,6 +31,8 @@ export const AddMovieForm = () => {
 
     const currentUserId =  parseInt(sessionStorage.getItem(userStorageKey))
     const history = useHistory()
+
+    const classes = useStyles()
     
     // Sets the state for (to be selected) tmdb id poster 
     const [moviePoster, setMoviePoster] = useState("")
@@ -118,7 +132,7 @@ export const AddMovieForm = () => {
     one movie object when a new poster is selected from search.*/
 
   return (
-    <form className="addMovieForm">
+    <form className="addMovieForm" className={classes.root} noValidate autoComplete="off">
         <fieldset>
             <div className="form-group">
                 <MovieSearch />

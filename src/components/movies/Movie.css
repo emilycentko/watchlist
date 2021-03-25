@@ -17,11 +17,11 @@
     opacity: 0.25;
 }
 
-.add__movieButton:hover {
+/* .add__movieButton:hover {
     background-color: navy;
     color: white;
     opacity: 1;
-}
+} */
 
 .add__movieButton:focus {
     background-color: navy;
