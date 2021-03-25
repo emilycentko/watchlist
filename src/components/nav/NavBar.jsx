@@ -14,11 +14,19 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
+    fontFamily: "Nunito Sans",
+    color: "white",
   },
-  title: {
+  navLinks: {
     flexGrow: 1,
+    textDecoration: 'none',
+    color: "white",
   },
+  logout: {
+    color: "white",
+  }
 }));
+
 
 export const ButtonAppBar = () => {
   const classes = useStyles();
@@ -31,27 +39,16 @@ export const ButtonAppBar = () => {
             <MenuIcon />
           </IconButton>
 
-          <Typography variant="h6" className={classes.title} to="/" component={ Link }>
-            Add Movies
+          <Typography variant="h6" className={classes.navLinks} to="/" component={ Link } color="inherit" underline="inherit">
+            ADD MOVIES
           </Typography>
-          <Typography variant="h6" className={classes.title} to="/watchlists" component={ Link }>
-            WatchLists
+          <Typography variant="h6" className={classes.navLinks} to="/watchlists" component={ Link } color="inherit" underline="inherit">
+            WATCHLISTS
           </Typography>
 
-          <Button color="inherit">Login</Button>
+          <Button className={classes.logout} color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
     </div>
   );
 }
-
-// return (
-//     <ul className="navbar">
-//         <li className="navbar__item active">
-//             <Link className="navbar__link" to="/">Add Movies</Link>
-//         </li>
-//         <li className="navbar__item">
-//             <Link className="navbar__link" to="/watchlists">View WatchLists</Link>
-//         </li>
-//     </ul>
-// )
