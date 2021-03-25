@@ -5,6 +5,7 @@ import { userStorageKey } from "./auth/authSettings"
 import { NavBar } from "./nav/NavBar"
 import { ApplicationViews } from "./ApplicationViews"
 import { FooterNav } from "./nav/Footer.jsx"
+import "./WatchListApp.css"
 
 export const WatchListApp = () => (
   <>

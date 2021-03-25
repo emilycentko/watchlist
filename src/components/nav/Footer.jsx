@@ -9,10 +9,14 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
 const useStyles = makeStyles({
   root: {
-    width: 700,
+    display: "flex",
     bottom: 0,
-    marginLeft: 40,
+    marginLeft: 10,
   },
+  p: {
+    fontSize: 10,
+    padding: 10,
+  }
 });
 
 export const FooterNav = () => {
@@ -22,6 +26,7 @@ export const FooterNav = () => {
   return (
     <BottomNavigation
       value={value}
+      classes={{root: {width: '100%'}}}
       
       onChange={(event, newValue) => {
         setValue(newValue);
@@ -29,11 +34,12 @@ export const FooterNav = () => {
       showLabels
       className={classes.root}
     >
-      <p>© Emily Centko March 2021</p>
+      <p className={classes.p}>© Emily Centko March 2021</p>
       <BottomNavigationAction label="GitHub" className={classes.icon} icon={<GitHubIcon />} href="https://github.com/emilycentko"/>
       <BottomNavigationAction label="WatchList" className={classes.icon} icon={<TheatersIcon />} href="https://github.com/emilycentko/watchlist"/>
-      <BottomNavigationAction label="TMDb API" className={classes.icon} icon={<MovieFilterIcon />} href="https://developers.themoviedb.org/3/getting-started/introduction"/>
       <BottomNavigationAction label="LinkedIn" className={classes.icon} icon={<LinkedInIcon />} href="https://www.linkedin.com/in/emily-centko"/>
+      <BottomNavigationAction label="TMDb API" className={classes.icon} icon={<MovieFilterIcon />} href="https://developers.themoviedb.org/3/getting-started/introduction"/>
+      <p className={classes.p}>This product uses the TMDb API but is not endorsed or certified by TMDb</p>
     </BottomNavigation>
   );
 }
