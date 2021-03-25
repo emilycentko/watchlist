@@ -5,6 +5,7 @@ import { userStorageKey } from "../auth/authSettings";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import cyan from '@material-ui/core/colors/cyan';
 import "./WatchList.css"
 
 const useStyles = makeStyles((theme) => ({
@@ -92,8 +93,7 @@ export const WatchListForm = () => {
         <h2 className="watchListForm__title">{watchListId ? "Edit WatchList Name" : "Add New WatchList"}</h2>
         <fieldset>
             <div className="form-group">
-                <TextField id="name" label="WatchList Name" variant="outlined" 
-                // <input type="text" id="name" required autoFocus className="form-control" placeholder="WatchList name"
+                <TextField id="name" label="WatchList Name" variant="outlined" className="form-control"
                 onChange={handleControlledInputChange}
                 value={watchList.name}/>
             </div>

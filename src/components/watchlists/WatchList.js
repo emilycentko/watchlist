@@ -5,9 +5,34 @@ import { WatchListContext } from "./WatchListProvider"
 import { WatchListMovieContext } from "./WatchListMovieProvider"
 import { userStorageKey } from "../auth/authSettings";
 import { UserContext } from "../users/UserProvider"
+import { makeStyles } from '@material-ui/core/styles'
+import Button from '@material-ui/core/Button'
+import cyan from '@material-ui/core/colors/cyan';
 import "./WatchList.css"
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+      '& > *': {
+        // margin: theme.spacing(1),
+        width: '40ch',
+      },
+    button: {
+        // backgroundColor: cyan[50],
+        // '&:hover': {
+        //     backgroundColor: cyan[100],
+        //     color: '#FFF'
+        // },
+        marginLeft: 30,
+        },
+    createButton: {
+        marginLeft: 40, 
+    }
+    },
+  }));
+
 export const WatchList = () => {
+
+    const classes = useStyles()
 
     const { watchLists, getWatchLists, deleteWatchList } = useContext(WatchListContext)
     const { getWatchListMovies} = useContext(WatchListMovieContext)
@@ -39,7 +64,9 @@ export const WatchList = () => {
 
         <>
             <div className="watchlists">
-                <button onClick={() => {history.push("/watchlists/create")}}>Create a New WatchList</button>
+            <Button variant="contained" color="secondary" className={classes.createButton} style={{margin: 20}}
+                onClick={() => {history.push("/watchlists/create")}}>Create a New WatchList
+            </Button>
             </div>
             <div className="watchlist__list">
 
@@ -51,15 +78,17 @@ export const WatchList = () => {
                                     <h3 className="watchlist__name">{watchList.name}</h3>
 
                                     <div className="watchlist__buttons">
-                                        <button onClick={() => {
+                                        <Button variant="contained" color="secondary" className={classes.button} style={{margin: 20}}
+                                            onClick={() => {
                                             history.push(`/watchlists/edit/${watchList.id}`)
                                             }}>Edit WatchList Name
-                                        </button>
+                                        </Button>
 
-                                        <button onClick= {() => 
+                                        <Button variant="contained" color="secondary" className={classes.button} style={{margin: 20}}
+                                            onClick= {() => 
                                             deleteWatchList(watchList.id)}>
                                             Delete WatchList
-                                        </button>
+                                        </Button>
                                     </div>
                                 </div>
                             
