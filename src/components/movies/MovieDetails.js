@@ -11,17 +11,13 @@ export const MovieDetails = ({movieId}) => {
     const { removeMovie } = useContext(WatchListMovieContext)
   
     const [movie, setMovies] = useState({})
+    const [watchListMovie] = useState({})
   
-    /* Params for the URL to create a dynamic route that included
-    the id that I need for both tmdb id and local JSON relationship id */
-
-    
     const history = useHistory()
 
     // get that movie id from tmdb and set state
     useEffect(() => {
         
-        console.log("useEffect", movie.id)
         getSearchedMovieById(movieId)
         .then((response) => {
           setMovies(response)
@@ -42,7 +38,7 @@ export const MovieDetails = ({movieId}) => {
             <div>{movie.genres?.name}</div>
     
             <button onClick={() => {
-                removeMovie(movie.id)
+                removeMovie(watchListMovie.id)
                 
                 .then (() =>
                     history.push(`/watchlists`)
