@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react"
 import { MovieContext } from "./MovieProvider"
-import { useParams, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import { WatchListMovieContext } from "../watchlists/WatchListMovieProvider"
 
 /* Component responsible for displaying details for one movie
 after movie poster is selected from Movie.js/WatchList page */
 
-export const MovieDetails = () => {
+export const MovieDetails = ({movieId}) => {
     const { getSearchedMovieById } = useContext(MovieContext)
     const { removeMovie } = useContext(WatchListMovieContext)
   
@@ -15,12 +15,13 @@ export const MovieDetails = () => {
     /* Params for the URL to create a dynamic route that included
     the id that I need for both tmdb id and local JSON relationship id */
 
-    const {movieId, id} = useParams()
+    
     const history = useHistory()
 
-    //get that movie id from tmdb and set state
+    // get that movie id from tmdb and set state
     useEffect(() => {
         
+        console.log("useEffect", movie.id)
         getSearchedMovieById(movieId)
         .then((response) => {
           setMovies(response)
@@ -41,7 +42,7 @@ export const MovieDetails = () => {
             <div>{movie.genres?.name}</div>
     
             <button onClick={() => {
-                removeMovie(id)
+                removeMovie(movie.id)
                 
                 .then (() =>
                     history.push(`/watchlists`)

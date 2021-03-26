@@ -29,7 +29,10 @@ export const MovieSearch = () => {
   each with a button to add and grab id and its properties from tmdb */
     return (
       <>
-        <div className ="movie__search">Add a movie:
+        <div>
+        Add a movie:
+        </div>
+        <div className ="movie__search">
           <TextField id="standard-basic" label="Search for a movie"
             className="input--wide"
             onKeyUp={(event) => {
@@ -41,6 +44,7 @@ export const MovieSearch = () => {
           }
             placeholder="Search for a movie... " />
         </div>
+        
         <div className="searched__movies">
               {filteredMovies.map(movie =>
 

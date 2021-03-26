@@ -6,7 +6,7 @@ export const WatchListMovieContext = createContext()
 
 export const WatchListMovieProvider = (props) => {
     const [watchListMovies, setWatchListMovies] = useState([])
-    const [movieId, setMovieId] = useState(0)
+    // const [movieId, setMovieId] = useState(0)
 
     const getWatchListMovies = () => {
         return fetch("http://localhost:8088/watchListMovies")
@@ -38,7 +38,7 @@ export const WatchListMovieProvider = (props) => {
     return (
         <WatchListMovieContext.Provider value={{
             watchListMovies, getWatchListMovies, addMovie, removeMovie,
-            movieId, setMovieId
+            // movieId, setMovieId
         }}>
             {props.children}
         </WatchListMovieContext.Provider>

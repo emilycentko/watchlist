@@ -11,6 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button'
+import Select from '@material-ui/core/Select'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,7 +54,7 @@ export const AddMovieForm = () => {
         // Creates a copy of watchListMovie object to make changes and then update/set state
         const newWatchListObj = { ...watchListMovie }
         let selectedVal = event.target.value
-
+        
         if (event.target.id.includes("Id")) {
             selectedVal = parseInt(selectedVal)
         }
