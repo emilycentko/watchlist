@@ -12,6 +12,8 @@ const useStyles = makeStyles({
     display: "flex",
     bottom: 0,
     marginLeft: 10,
+    position: "fixed",
+    width: "100%",
   },
   p: {
     fontSize: 10,
