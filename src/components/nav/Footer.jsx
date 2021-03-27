@@ -12,7 +12,6 @@ const useStyles = makeStyles({
     display: "flex",
     bottom: 0,
     marginLeft: 10,
-    position: "fixed",
     width: "100%",
   },
   p: {
@@ -30,7 +29,7 @@ export const FooterNav = () => {
       value={value}
       classes={{root: {width: '100%'}}}
       
-      onChange={(event, newValue) => {
+      onChange={(newValue) => {
         setValue(newValue);
       }}
       showLabels

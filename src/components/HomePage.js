@@ -26,8 +26,9 @@ export const HomePage = () => {
     // User-specific welcome message 
     return (
         <>
-            
-            <h2>Welcome, {user.name}</h2>
+            <div className="home">
+                <h2>Welcome, {user.name}</h2>
+            </div>
         </>
     )
 }

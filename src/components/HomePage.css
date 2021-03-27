@@ -4,4 +4,5 @@ h2 {
 
 form {
     margin-left: 50px;
+    min-height: 100vh;
 }

@@ -11,9 +11,11 @@ export const MovieDetails = ({movieId}) => {
     const { removeMovie } = useContext(WatchListMovieContext)
   
     const [movie, setMovies] = useState({})
-    const [watchListMovie] = useState({})
+    const [watchListMovie, setWatchListMovies] = useState({})
   
     const history = useHistory()
+
+    const addedMovie = watchListMovie.id
 
     // get that movie id from tmdb and set state
     useEffect(() => {
@@ -35,11 +37,9 @@ export const MovieDetails = ({movieId}) => {
             <div>{year.getFullYear()}</div>
             <div>{movie.runtime} minutes</div>
             <div>{movie.overview}</div>
-            <div>{movie.genres?.name}</div>
     
             <button onClick={() => {
-                removeMovie(watchListMovie.id)
-                
+                removeMovie(addedMovie)
                 .then (() =>
                     history.push(`/watchlists`)
                 )}}>Remove</button>
