@@ -6,12 +6,12 @@
   height: 300px; 
   overflow: auto;  
   white-space: nowrap; 
-  flex-direction: row
+  flex-direction: row;
 }
 
 .movie__poster {
   flex: 0 0 auto;
-  text-align: center;
+  
   padding: 10px;
   border-radius: 5px;
   height: 290px;

@@ -52,10 +52,12 @@ const rand = () => {
     const body = (
       <div style={modalStyle} className={classes.paper}>
         <MovieCard key={movie.movieId} movie={movie} />
-        <MovieDetails movieId={movie.movieId} />
+        <MovieDetails key={movie.movieId} watchListMovieId={movie}/>
         
       </div>
     );
+
+
   
     return (
       <div>

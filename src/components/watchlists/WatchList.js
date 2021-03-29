@@ -92,7 +92,7 @@ export const WatchList = () => {
                                         </Button>
                                     </div>
                                 </div>
-                            
+                            {console.log(watchList.watchListMovies)}
                                 {watchList.watchListMovies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
                             </div>
                 })
