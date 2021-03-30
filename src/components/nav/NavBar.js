@@ -1,18 +1,23 @@
 import React from "react"
-import { ButtonAppBar } from "./NavBar.jsx"
 import "./NavBar.css"
+import { Link } from "react-router-dom"
+import logo from "../../images/logo.png"
 
 export const NavBar = (props) => {
     return (
 
-        <ButtonAppBar /> 
-    //     <ul className="navbar">
-    //         <li className="navbar__item active">
-    //             <Link className="navbar__link" to="/">Add Movies</Link>
-    //         </li>
-    //         <li className="navbar__item">
-    //             <Link className="navbar__link" to="/watchlists">View WatchLists</Link>
-    //         </li>
-    //     </ul>
+        // <ButtonAppBar /> 
+        <div className="navbar">
+            <div>
+                <img src={logo} width="110"/>
+
+            </div>
+            <div className="navbar__item active">
+                <Link className="navbar__link" to="/">ADD MOVIES</Link>
+            </div>
+            <div className="navbar__item">
+                <Link className="navbar__link" to="/watchlists">WATCHLISTS</Link>
+            </div>
+        </div>
     )
 }

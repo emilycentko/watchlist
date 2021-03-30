@@ -2,18 +2,18 @@
     display: flex;
 }
 
-.searched__movieContainer {
+.searched__movies {
     width: 150px;
-    margin: 5px 0px;
     text-align: center;
 }
 
 .filtered__moviePoster {
-    height: 200px;
+    height: 250px;
 }
 
 .add__movieButton {
     width: 30px;
+    align-items: center;
     opacity: 0.25;
 }
 
@@ -31,4 +31,10 @@
 
 fieldset {
     border: none;
+}
+
+select {
+    padding: 8px 16px;
+    border: 1px solid #0d47a1;
+    border-radius: 1em;
 }

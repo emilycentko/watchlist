@@ -52,7 +52,7 @@ export const MovieSearch = () => {
                 {movie.poster_path === null ? `No image available for ${movie.title}` :
                 <img className="filtered__moviePoster" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}></img>}
 
-                  <label htmlFor="add"></label>
+                  
                   <button id="movieId" className="add__movieButton" value={movie.id}
                     onClick=
                       {handleControlledInputChange}

@@ -8,7 +8,6 @@ import { WatchListMovieProvider } from "./watchlists/WatchListMovieProvider"
 import { AddMovieForm } from "./movies/MovieForm"
 import { UserProvider } from "./users/UserProvider"
 import { WatchListForm } from "./watchlists/WatchListForm"
-import { MovieDetails } from "./movies/MovieDetails"
 
 export const ApplicationViews = () => {
     return (

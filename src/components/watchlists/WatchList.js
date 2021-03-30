@@ -18,11 +18,6 @@ const useStyles = makeStyles((theme) => ({
         width: '40ch',
       },
     button: {
-        // backgroundColor: cyan[50],
-        // '&:hover': {
-        //     backgroundColor: cyan[100],
-        //     color: '#FFF'
-        // },
         marginLeft: 30,
         },
     createButton: {

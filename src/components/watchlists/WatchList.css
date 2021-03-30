@@ -1,7 +1,7 @@
 .watchlist {
   display: flex;
   flex-wrap: nowrap;
-  margin: 10px;  
+  /* margin: 10px;   */
   padding: 30px;   
   height: 300px; 
   overflow: auto;  
@@ -10,9 +10,9 @@
 }
 
 .movie__poster {
-  flex: 0 0 auto;
+  /* flex: 0 0 auto; */
   
-  padding: 10px;
+  /* padding: 10px; */
   border-radius: 5px;
   height: 290px;
 }
