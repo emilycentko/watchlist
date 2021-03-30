@@ -35,6 +35,11 @@ fieldset {
 
 select {
     padding: 8px 16px;
-    border: 1px solid #0d47a1;
-    border-radius: 1em;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 20px 0px 20px 20px;
+}
+
+.movie__search {
+    margin: 20px
 }

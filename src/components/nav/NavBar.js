@@ -6,7 +6,6 @@ import logo from "../../images/logo.png"
 export const NavBar = (props) => {
     return (
 
-        // <ButtonAppBar /> 
         <div className="navbar">
             <div>
                 <img src={logo} width="110"/>

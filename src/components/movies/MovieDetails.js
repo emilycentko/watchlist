@@ -2,10 +2,27 @@ import React, { useContext, useEffect, useState } from "react"
 import { MovieContext } from "./MovieProvider"
 import { WatchListMovieContext } from "../watchlists/WatchListMovieProvider"
 import Modal from '@material-ui/core/Modal';
+import Button from '@material-ui/core/Button'
+import { makeStyles } from '@material-ui/core/styles'
 
 
 /* Component responsible for displaying details for one movie
 after movie poster is selected from Movie.js/WatchList page */
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      '& > *': {
+        // margin: theme.spacing(1),
+        width: '40ch',
+      },
+    button: {
+        marginLeft: 30,
+        },
+    createButton: {
+        marginLeft: 40, 
+    }
+    },
+  }));
 
 export const MovieDetails = ({watchListMovieId}) => {
     const { getSearchedMovieById } = useContext(MovieContext)
@@ -15,6 +32,7 @@ export const MovieDetails = ({watchListMovieId}) => {
 
     const [open, setOpen] = useState(true)
   
+    const classes = useStyles()
     
 
     const handleClose = () => {
@@ -44,12 +62,14 @@ export const MovieDetails = ({watchListMovieId}) => {
             <div>{movie.runtime} minutes</div>
             <div>{movie.overview}</div>
     
-            <button onClick={() => {
+            <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 20, color: "#ffca28", fontWeight: "bold", border: "solid #ffca28 2px"}}
+            onClick={() => {
                 removeMovie(watchListMovieId.id)
                 .then(() =>
                     handleClose()
                     
-                )}}>Remove</button>
+                )}}>Remove
+            </Button>
             
         </section>
     )

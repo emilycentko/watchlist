@@ -143,7 +143,7 @@ export const AddMovieForm = () => {
         </fieldset>
 
         <fieldset>
-            <div className="form-group">
+            <div className="form-group2">
 
                 <label htmlFor="watchList">Choose a watch list:</label>
                 <select value ={watchListMovie.watchListId} id="watchListId" className="form-control" onChange={handleControlledInputChange}>
@@ -157,13 +157,14 @@ export const AddMovieForm = () => {
                 </select>
             </div>
         </fieldset>
-    
         
-        <Button variant="contained" color="secondary" className={classes.addButton} style={{margin: 20, padding: 22}}
-        
+        <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 20, color: "#ffca28", fontWeight: "bold", border: "solid #ffca28 2px"}}
+
             onClick={handleSaveMovie}>
-            Save Movie to Watch List
+            SAVE TO WATCHLIST
         </Button>
+        
+        
     </form>
   )
 }

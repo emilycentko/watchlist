@@ -17,8 +17,8 @@
   height: 290px;
 }
 
-button {
-  height: 30px;
+.new__watchlistButton {
+  margin-left: 30px;
 }
 
 .watchlist__buttons {

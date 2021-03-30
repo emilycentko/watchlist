@@ -29,7 +29,7 @@ export const MovieSearch = () => {
   each with a button to add and grab id and its properties from tmdb */
     return (
       <>
-        <div>
+        <div className="add__movieHeading">
         Add a movie:
         </div>
         <div className ="movie__search">

@@ -60,7 +60,7 @@ export const WatchList = () => {
 
         <>
             <div className="watchlists">
-            <Button variant="contained" color="secondary" className={classes.createButton} style={{margin: 20}}
+            <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 40, padding: 10, color: "#ffca28", fontWeight: "bold", border: "solid #ffca28 2px"}}
                 onClick={() => {history.push("/watchlists/create")}}>Create a New WatchList
             </Button>
             </div>
@@ -70,25 +70,27 @@ export const WatchList = () => {
                    
 
                     return <div className ="watchlist">
-                                <div>
-                                    <h3 className="watchlist__name">{watchList.name}</h3>
+                                <div className="single__watchlist">
+                                    <h2 className="watchlist__name">{watchList.name}</h2>
 
                                     <div className="watchlist__buttons">
-                                        <Button variant="contained" color="secondary" className={classes.button} style={{margin: 20}}
+                                        <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 20, color: "#ffca28", fontWeight: "bold", border: "solid #ffca28 2px"}}
                                             onClick={() => {
                                             history.push(`/watchlists/edit/${watchList.id}`)
                                             }}>Edit WatchList Name
                                         </Button>
 
-                                        <Button variant="contained" color="secondary" className={classes.button} style={{margin: 20}}
+                                        <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 20, color: "#ffca28", fontWeight: "bold", border: "solid #ffca28 2px"}}
                                             onClick= {() => 
                                             deleteWatchList(watchList.id)}>
                                             Delete WatchList
                                         </Button>
                                     </div>
                                 </div>
-                            {console.log(watchList.watchListMovies)}
-                                {watchList.watchListMovies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
+                                {/* <div className="watchlist__list"> */}
+                                    {console.log(watchList.watchListMovies)}
+                                    {watchList.watchListMovies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
+                                {/* </div> */}
                             </div>
                 })
                 }

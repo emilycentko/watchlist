@@ -11,17 +11,17 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       main: blue[900],
-      contrastText: '#000',
+      contrastText: 'amber[400]',
     },
     secondary: {
       main: amber[400],
-      contrastText: '#1a237e',
+      contrastText: 'blue[900]',
     },
   },
   typography: {
     fontFamily: 
       'Arial',
-    fontSize: 11,
+    fontSize: 14,
   },
 });
 
