@@ -12,21 +12,18 @@
 }
 
 .add__movieButton {
-    width: 30px;
     align-items: center;
     opacity: 0.25;
+    font-size: 35px;
+    background-color: Transparent;
+    border: none;
 }
 
-/* .add__movieButton:hover {
-    background-color: navy;
-    color: white;
-    opacity: 1;
-} */
-
 .add__movieButton:focus {
-    background-color: navy;
-    color: white;
+    color: navy;
     opacity: 1;
+    outline: none;
+    border: none;
 }
 
 fieldset {
@@ -40,6 +37,15 @@ select {
     margin: 20px 0px 20px 20px;
 }
 
+option {
+    font-family: Arial;
+    font-size: 19;
+}
+
 .movie__search {
     margin: 20px
+}
+
+.movie__details {
+    text-align: center;
 }

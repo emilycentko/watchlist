@@ -62,14 +62,14 @@ export const MovieDetails = ({watchListMovieId}) => {
             <div>{movie.runtime} minutes</div>
             <div>{movie.overview}</div>
     
-            <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 20, color: "#ffca28", fontWeight: "bold", border: "solid #ffca28 2px"}}
+            {/* <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 20, color: "#ffca28", fontWeight: "bold", border: "solid #ffca28 2px"}}
             onClick={() => {
                 removeMovie(watchListMovieId.id)
                 .then(() =>
                     handleClose()
                     
                 )}}>Remove
-            </Button>
+            </Button> */}
             
         </section>
     )

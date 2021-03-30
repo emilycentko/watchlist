@@ -16,9 +16,10 @@
     margin-top: 20px;
     list-style-type: none;
     color: white;
+    font-weight: bold;
 }
 
-img {
+.logo {
    align-content: center;
    margin: 8px 0px 0px 40px;
 }
@@ -36,8 +37,4 @@ img {
 
 .navbar__link:visited {
     color: white;
-}
-
-img {
-    margin-right: 30px;
 }

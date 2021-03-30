@@ -8,10 +8,7 @@ import { userStorageKey } from "../auth/authSettings"
 import { UserContext } from "../users/UserProvider"
 import "./Movie.css"
 import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button'
-import Select from '@material-ui/core/Select'
 
 const useStyles = makeStyles((theme) => ({
   root: {

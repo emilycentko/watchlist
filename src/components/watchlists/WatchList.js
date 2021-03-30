@@ -7,9 +7,7 @@ import { userStorageKey } from "../auth/authSettings";
 import { UserContext } from "../users/UserProvider"
 import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
-import cyan from '@material-ui/core/colors/cyan';
 import "./WatchList.css"
-import { blue } from "@material-ui/core/colors"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -87,10 +85,10 @@ export const WatchList = () => {
                                         </Button>
                                     </div>
                                 </div>
-                                {/* <div className="watchlist__list"> */}
+                                
                                     {console.log(watchList.watchListMovies)}
                                     {watchList.watchListMovies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
-                                {/* </div> */}
+                                
                             </div>
                 })
                 }

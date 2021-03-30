@@ -8,7 +8,7 @@ export const NavBar = (props) => {
 
         <div className="navbar">
             <div>
-                <img src={logo} width="110"/>
+                <img className="logo" src={logo} width="110"/>
 
             </div>
             <div className="navbar__item active">

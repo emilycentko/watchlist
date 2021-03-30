@@ -1,16 +1,26 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext } from "react"
 import { MovieContext } from "./MovieProvider"
 import { WatchListMovieContext } from "../watchlists/WatchListMovieProvider"
 import TextField from '@material-ui/core/TextField'
-import AddIcon from '@material-ui/icons/Add';
+import { makeStyles } from '@material-ui/core/styles';
 
 /* Component responsible for 1. searching a movie and displaying
 filtered movies 2. with a button to add movie to a WatchListForm.js.
 Function called in MovieForm */
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+  },
+}));
+
 export const MovieSearch = () => {
     const { searchMovie, filteredMovies, setFilteredMovies } = useContext(MovieContext)
     const { setMovieId } = useContext(WatchListMovieContext)
+
+    const classes = useStyles();
 
     // Handles grabbing movieId value and setting new movieId state upon selection
     const handleControlledInputChange = (event) => {
@@ -49,15 +59,19 @@ export const MovieSearch = () => {
               {filteredMovies.map(movie =>
 
               <div className="searched__movieContainer">
-                {movie.poster_path === null ? `No image available for ${movie.title}` :
-                <img className="filtered__moviePoster" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}></img>}
-
-                  
-                  <button id="movieId" className="add__movieButton" value={movie.id}
-                    onClick=
-                      {handleControlledInputChange}
-                    >+
-                  </button>
+                {movie.poster_path === null ? "" :
+                  <img className="filtered__moviePoster" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}></img>}
+                
+                {movie.poster_path === null ? "" :
+                <p>{movie.title}</p>}
+                
+                {movie.poster_path === null ? "" :
+                
+                <button id="movieId" className="add__movieButton" value={movie.id}
+                  onClick=
+                  {handleControlledInputChange}>
+                + 
+                </button>}
               </div>
               )}
         </div>

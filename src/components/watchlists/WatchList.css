@@ -21,6 +21,11 @@
   margin-left: 30px;
 }
 
+.movie__card {
+  text-align: center;
+  margin: 20px;
+}
+
 .watchlist__buttons {
   display: flex;
   flex-direction: column;
@@ -29,4 +34,8 @@
 .watchListForm {
   margin: auto;
   position: relative; 
+}
+
+.watchlist__name {
+  text-align: center;
 }
