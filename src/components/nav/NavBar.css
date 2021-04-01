@@ -1,6 +1,6 @@
 .navbar {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     display: flex;
     flex-grow: 1;
     background-color: #0d47a1;

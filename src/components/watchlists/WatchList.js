@@ -24,13 +24,15 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-export const WatchList = () => {
+  export const WatchList = () => {
 
     const classes = useStyles()
 
     const { watchLists, getWatchLists, deleteWatchList } = useContext(WatchListContext)
-    const { getWatchListMovies} = useContext(WatchListMovieContext)
+    const { watchListMovies, getWatchListMovies} = useContext(WatchListMovieContext)
     const { getUsers } = useContext(UserContext)
+
+    const [watchListMovie, setWatchListMovies] = useState([])
 
     const userId = parseInt(sessionStorage.getItem(userStorageKey))
   
@@ -41,6 +43,7 @@ export const WatchList = () => {
         .then(getWatchLists)
         .then(getWatchListMovies)
     }, [])
+
 
 
     /* getWatchLists fetch call for watch lists embeds the join table
@@ -85,9 +88,12 @@ export const WatchList = () => {
                                         </Button>
                                     </div>
                                 </div>
-                                
-                                    {console.log(watchList.watchListMovies)}
+                                <div>
                                     {watchList.watchListMovies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
+
+                                </div>
+
+                                
                                 
                             </div>
                 })

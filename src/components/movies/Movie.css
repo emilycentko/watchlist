@@ -11,6 +11,10 @@
     height: 250px;
 }
 
+.searched__movieContainer {
+    margin: 15px;
+}
+
 .add__movieButton {
     align-items: center;
     opacity: 0.25;
