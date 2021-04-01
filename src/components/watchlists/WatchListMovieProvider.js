@@ -26,6 +26,11 @@ export const WatchListMovieProvider = (props) => {
             .then(getWatchListMovies)
     }
 
+    const getWatchListMovieById = (id) => {
+        return fetch(`http://localhost:8088/watchListMovies/${id}`)
+            .then(res => res.json())
+    }
+
     const removeMovie = id => {
         return fetch(`http://localhost:8088/watchListMovies/${id}`, {
             method: "DELETE"
@@ -37,7 +42,7 @@ export const WatchListMovieProvider = (props) => {
     function keys to allow any child elements to access them */
     return (
         <WatchListMovieContext.Provider value={{
-            watchListMovies, getWatchListMovies, addMovie, removeMovie,
+            watchListMovies, getWatchListMovies, addMovie, removeMovie, getWatchListMovieById,
             movieId, setMovieId
         }}>
             {props.children}

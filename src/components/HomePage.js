@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "./users/UserProvider"
 import { userStorageKey } from "./auth/authSettings"
+import "./HomePage.css"
 
 export const HomePage = () => {
 
@@ -25,9 +26,9 @@ export const HomePage = () => {
     // User-specific welcome message 
     return (
         <>
-            <h2>WatchList</h2>
-            
-            <h3>Welcome, {user.name}</h3>
+            <div className="home">
+                <h2 className="welcome">Welcome, {user.name}</h2>
+            </div>
         </>
     )
 }

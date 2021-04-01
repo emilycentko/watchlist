@@ -1,16 +1,22 @@
 import React from "react"
-import { Link } from "react-router-dom"
 import "./NavBar.css"
+import { Link } from "react-router-dom"
+import logo from "../../images/logo.png"
 
 export const NavBar = (props) => {
     return (
-        <ul className="navbar">
-            <li className="navbar__item active">
-                <Link className="navbar__link" to="/">Add Movies</Link>
-            </li>
-            <li className="navbar__item">
-                <Link className="navbar__link" to="/watchlists">View WatchLists</Link>
-            </li>
-        </ul>
+
+        <div className="navbar">
+            <div>
+                <img className="logo" src={logo} width="110"/>
+
+            </div>
+            <div className="navbar__item active">
+                <Link className="navbar__link" to="/">ADD MOVIES</Link>
+            </div>
+            <div className="navbar__item">
+                <Link className="navbar__link" to="/watchlists">MY WATCHLISTS</Link>
+            </div>
+        </div>
     )
 }

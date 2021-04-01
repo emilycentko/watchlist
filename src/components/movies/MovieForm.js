@@ -6,7 +6,19 @@ import { useHistory } from 'react-router-dom'
 import { MovieSearch } from "./MovieSearch"
 import { userStorageKey } from "../auth/authSettings"
 import { UserContext } from "../users/UserProvider"
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button'
 import "./Movie.css"
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+      justifyContent: 'center'
+    },
+  },
+}));
 
 // Component responsible for adding a movie to an existing watch list in a form
 
@@ -19,6 +31,8 @@ export const AddMovieForm = () => {
 
     const currentUserId =  parseInt(sessionStorage.getItem(userStorageKey))
     const history = useHistory()
+
+    const classes = useStyles()
     
     // Sets the state for (to be selected) tmdb id poster 
     const [moviePoster, setMoviePoster] = useState("")
@@ -37,7 +51,7 @@ export const AddMovieForm = () => {
         // Creates a copy of watchListMovie object to make changes and then update/set state
         const newWatchListObj = { ...watchListMovie }
         let selectedVal = event.target.value
-
+        
         if (event.target.id.includes("Id")) {
             selectedVal = parseInt(selectedVal)
         }
@@ -118,7 +132,7 @@ export const AddMovieForm = () => {
     one movie object when a new poster is selected from search.*/
 
   return (
-    <form className="addMovieForm">
+    <form className="addMovieForm" className={classes.root} noValidate autoComplete="off">
         <fieldset>
             <div className="form-group">
                 <MovieSearch />
@@ -126,7 +140,7 @@ export const AddMovieForm = () => {
         </fieldset>
 
         <fieldset>
-            <div className="form-group">
+            <div className="form-group2">
 
                 <label htmlFor="watchList">Choose a watch list:</label>
                 <select value ={watchListMovie.watchListId} id="watchListId" className="form-control" onChange={handleControlledInputChange}>
@@ -140,11 +154,14 @@ export const AddMovieForm = () => {
                 </select>
             </div>
         </fieldset>
-        <button className="btn btn-primary"
         
+        <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 20, color: "#ffca28", fontWeight: "bold", border: "solid #ffca28 2px"}}
+
             onClick={handleSaveMovie}>
-            Save Movie to Watch List
-        </button>
+            SAVE TO WATCHLIST
+        </Button>
+        
+        
     </form>
   )
 }

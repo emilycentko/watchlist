@@ -5,13 +5,34 @@ import { WatchListContext } from "./WatchListProvider"
 import { WatchListMovieContext } from "./WatchListMovieProvider"
 import { userStorageKey } from "../auth/authSettings";
 import { UserContext } from "../users/UserProvider"
+import { makeStyles } from '@material-ui/core/styles'
+import Button from '@material-ui/core/Button'
 import "./WatchList.css"
 
-export const WatchList = () => {
+const useStyles = makeStyles((theme) => ({
+    root: {
+      '& > *': {
+        // margin: theme.spacing(1),
+        width: '40ch',
+      },
+    button: {
+        marginLeft: 30,
+        },
+    createButton: {
+        marginLeft: 40, 
+    }
+    },
+  }));
+
+  export const WatchList = () => {
+
+    const classes = useStyles()
 
     const { watchLists, getWatchLists, deleteWatchList } = useContext(WatchListContext)
-    const { getWatchListMovies} = useContext(WatchListMovieContext)
+    const { watchListMovies, getWatchListMovies} = useContext(WatchListMovieContext)
     const { getUsers } = useContext(UserContext)
+
+    const [watchListMovie, setWatchListMovies] = useState([])
 
     const userId = parseInt(sessionStorage.getItem(userStorageKey))
   
@@ -22,6 +43,7 @@ export const WatchList = () => {
         .then(getWatchLists)
         .then(getWatchListMovies)
     }, [])
+
 
 
     /* getWatchLists fetch call for watch lists embeds the join table
@@ -39,7 +61,9 @@ export const WatchList = () => {
 
         <>
             <div className="watchlists">
-                <button onClick={() => {history.push("/watchlists/create")}}>Create a New WatchList</button>
+            <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 40, padding: 10, color: "#ffca28", fontWeight: "bold", border: "solid #ffca28 2px"}}
+                onClick={() => {history.push("/watchlists/create")}}>Create a New WatchList
+            </Button>
             </div>
             <div className="watchlist__list">
 
@@ -47,23 +71,26 @@ export const WatchList = () => {
                    
 
                     return <div className ="watchlist">
-                                <div>
-                                    <h3 className="watchlist__name">{watchList.name}</h3>
+                                <div className="single__watchlist">
+                                    <h2 className="watchlist__name">{watchList.name}</h2>
 
                                     <div className="watchlist__buttons">
-                                        <button onClick={() => {
+                                        <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 20, color: "#ffca28", fontWeight: "bold", border: "solid #ffca28 2px"}}
+                                            onClick={() => {
                                             history.push(`/watchlists/edit/${watchList.id}`)
                                             }}>Edit WatchList Name
-                                        </button>
+                                        </Button>
 
-                                        <button onClick= {() => 
+                                        <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 20, color: "#ffca28", fontWeight: "bold", border: "solid #ffca28 2px"}}
+                                            onClick= {() => 
                                             deleteWatchList(watchList.id)}>
                                             Delete WatchList
-                                        </button>
+                                        </Button>
                                     </div>
                                 </div>
-                            
-                                {watchList.watchListMovies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
+                                
+                                    {watchList.watchListMovies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
+                                
                             </div>
                 })
                 }

@@ -8,13 +8,13 @@ and upon click --> MovieDetails.js */
 
 export const MovieCard = ( {movie} ) => {
 
-    return (
-        <section className="movie__card">
-            <Link to={`/watchlists/moviedetails/${movie.movieId}/${movie.id}`}>
-                <img className="movie__poster" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/>
-            </Link>
-            
-            
-        </section>
-    )
+  return (
+      <section className="movie__card">
+          <Link to={`/watchlists/moviedetails/${movie.movieId}/${movie.id}`}>
+              <img className="movie__poster" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/>
+          </Link>
+          
+          
+      </section>
+  )
 }

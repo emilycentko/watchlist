@@ -1,28 +1,41 @@
 .watchlist {
   display: flex;
   flex-wrap: nowrap;
-  margin: 10px;  
+  /* margin: 10px;   */
   padding: 30px;   
   height: 300px; 
   overflow: auto;  
   white-space: nowrap; 
-  flex-direction: row
+  flex-direction: row;
 }
 
 .movie__poster {
-  flex: 0 0 auto;
-  text-align: center;
-  padding: 10px;
+  /* flex: 0 0 auto; */
+  
+  /* padding: 10px; */
   border-radius: 5px;
-  color: #003300;
-  height: 300px;
+  height: 290px;
 }
 
-button {
-  height: 30px;
+.new__watchlistButton {
+  margin-left: 30px;
+}
+
+.movie__card {
+  text-align: center;
+  margin-right: 20px;
 }
 
 .watchlist__buttons {
   display: flex;
   flex-direction: column;
+}
+
+.watchListForm {
+  margin: auto;
+  position: relative; 
+}
+
+.watchlist__name {
+  text-align: center;
 }

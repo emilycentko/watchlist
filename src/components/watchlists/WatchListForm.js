@@ -2,11 +2,26 @@ import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from 'react-router-dom';
 import { WatchListContext } from "./WatchListProvider"
 import { userStorageKey } from "../auth/authSettings";
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import "./WatchList.css"
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+      justifyContent: 'center'
+    },
+  },
+}));
 
 // Component responsible for both adding a new watch list and editing an existing watch list title
 
 export const WatchListForm = () => {
+
+    const classes = useStyles();
 
     const { addWatchList, getWatchListById, editWatchList } = useContext(WatchListContext)
 
@@ -74,24 +89,25 @@ export const WatchListForm = () => {
 
   // Form to edit watch list name
   return (
-    <form className="watchListForm">
-        <h2 className="watchListForm__title">{watchListId ? "Edit WatchList" : "Add New WatchList"}</h2>
+    <form className="watchListForm" className={classes.root} noValidate autoComplete="off">
+        <h2 className="watchListForm__title">{watchListId ? "Edit WatchList Name" : "Add New WatchList"}</h2>
         <fieldset>
             <div className="form-group">
-                <label htmlFor="name">WatchList name:</label>
-                <input type="text" id="name" required autoFocus className="form-control" placeholder="WatchList name"
+                <TextField id="name" label="WatchList Name" variant="outlined" className="form-control"
                 onChange={handleControlledInputChange}
                 value={watchList.name}/>
             </div>
         </fieldset>
 
-        <button className="btn btn-primary"
+        <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 20, color: "#ffca28", fontWeight: "bold", border: "solid #ffca28 2px"}}
+        className="btn btn-primary"
             disabled={isLoading}
             onClick={event => {
                 event.preventDefault()
                 handleSaveWatchList()
             }}>
-            {watchListId ? "Save WatchList" : "Add New WatchList"}</button>
+            {watchListId ? "Save WatchList" : "Add New WatchList"}
+          </Button>
     </form>
 )
 
