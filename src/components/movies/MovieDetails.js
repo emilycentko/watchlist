@@ -62,7 +62,7 @@ export const MovieDetails = ({watchListMovieId}) => {
             <h3>{movie.title}</h3>
             <div>{year.getFullYear()}</div>
             <div>{movie.runtime} minutes</div>
-            <div>{movie.overview}</div>
+            <div className="overview">{movie.overview}</div>
     
             <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 20, color: "#ffca28", fontWeight: "bold", border: "solid #ffca28 2px"}}
                 onClick={() => {

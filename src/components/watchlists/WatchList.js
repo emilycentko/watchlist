@@ -88,12 +88,8 @@ const useStyles = makeStyles((theme) => ({
                                         </Button>
                                     </div>
                                 </div>
-                                <div>
-                                    {watchList.watchListMovies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
-
-                                </div>
-
                                 
+                                    {watchList.watchListMovies.map(movie => <MovieCard key={movie.id} movie={movie}/>)}
                                 
                             </div>
                 })

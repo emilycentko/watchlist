@@ -51,5 +51,9 @@ option {
 }
 
 .movie__details {
+    min-height: 100vh;
     text-align: center;
+    margin: auto;
+    width: 34%;
+    margin-top: 50px;
 }
