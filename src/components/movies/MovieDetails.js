@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-export const MovieDetails = ({watchListMovieId}) => {
+export const MovieDetails = () => {
     const { getSearchedMovieById } = useContext(MovieContext)
     const { removeMovie } = useContext(WatchListMovieContext)
   
@@ -52,7 +52,7 @@ export const MovieDetails = ({watchListMovieId}) => {
     //year only
     const year = new Date(`${movie.release_date}`)
 
-    console.log(id)
+    console.log(movie.title)
         
     //details and delete movie
     return (
