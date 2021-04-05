@@ -136,7 +136,7 @@ export const AddMovieForm = () => {
         
 
         <fieldset>
-            <div className="form-group2">
+            <div className="custom-select">
 
                 <label htmlFor="watchList">Choose a watch list:</label>
                 <select value ={watchListMovie.watchListId} id="watchListId" className="form-control" onChange={handleControlledInputChange}>
@@ -148,6 +148,7 @@ export const AddMovieForm = () => {
                         </option>
                     ))}
                 </select>
+                <span className="custom-arrow"></span>
             </div>
         </fieldset>
 
