@@ -133,11 +133,7 @@ export const AddMovieForm = () => {
 
   return (
     <form className="addMovieForm" className={classes.root} noValidate autoComplete="off">
-        <fieldset>
-            <div className="form-group">
-                <MovieSearch />
-            </div>
-        </fieldset>
+        
 
         <fieldset>
             <div className="form-group2">
@@ -152,6 +148,12 @@ export const AddMovieForm = () => {
                         </option>
                     ))}
                 </select>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <div className="form-group">
+                <MovieSearch />
             </div>
         </fieldset>
         
