@@ -155,7 +155,7 @@ export const AddMovieForm = () => {
             </div>
         </fieldset>
         
-        <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 20, color: "#ffca28", fontWeight: "bold", border: "solid #ffca28 2px"}}
+        <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 20, color: "white", fontWeight: "bold", border: "solid #f44336 2px"}}
 
             onClick={handleSaveMovie}>
             SAVE TO WATCHLIST

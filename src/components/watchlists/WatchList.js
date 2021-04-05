@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
 
         <>
             <div className="watchlists">
-            <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 40, padding: 10, color: "#ffca28", fontWeight: "bold", border: "solid #ffca28 2px"}}
+            <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 60, padding: 10, color: "#white", fontWeight: "bold", border: "solid #f44336 2px"}}
                 onClick={() => {history.push("/watchlists/create")}}>Create a New WatchList
             </Button>
             </div>
@@ -75,13 +75,13 @@ const useStyles = makeStyles((theme) => ({
                                     <h2 className="watchlist__name">{watchList.name}</h2>
 
                                     <div className="watchlist__buttons">
-                                        <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 20, color: "#ffca28", fontWeight: "bold", border: "solid #ffca28 2px"}}
+                                        <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 20, color: "#white", fontWeight: "bold", border: "solid #f44336 2px"}}
                                             onClick={() => {
                                             history.push(`/watchlists/edit/${watchList.id}`)
                                             }}>Edit WatchList Name
                                         </Button>
 
-                                        <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 20, color: "#ffca28", fontWeight: "bold", border: "solid #ffca28 2px"}}
+                                        <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 20, color: "#white", fontWeight: "bold", border: "solid #f44336 2px"}}
                                             onClick= {() => 
                                             deleteWatchList(watchList.id)}>
                                             Delete WatchList

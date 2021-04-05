@@ -3,6 +3,7 @@
 
 body {
     min-height: 100vh;
+    background-image: linear-gradient(to bottom right, #e3f2fd, white);
 }
 
 body,
@@ -10,12 +11,12 @@ button,
 input,
 select,
 textarea {
-  color: #404040;
-  font-family: "Arial", sans-serif;
-  font-size: 14px;
+  color: #072238;
+  font-family: "Raleway", sans-serif;
+  font-size: 17px;
   line-height: 1.5;
 }
 
 h3 {
-  font-family: "Arial", sans-serif;
+  font-family: "Raleway", sans-serif;
 }

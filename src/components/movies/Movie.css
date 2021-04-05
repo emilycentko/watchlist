@@ -15,6 +15,14 @@
     margin: 15px;
 }
 
+.filtered__moviePoster:hover {
+    position:relative;
+    width:170px;
+    height:auto;
+    display:block;
+    z-index:999;
+  }
+
 .add__movieButton {
     align-items: center;
     opacity: 0.25;
@@ -41,9 +49,8 @@ select {
     margin: 20px 0px 20px 20px;
 }
 
-option {
-    font-family: Arial;
-    font-size: 19;
+.movie__photo {
+    height: 290px;
 }
 
 .movie__search {

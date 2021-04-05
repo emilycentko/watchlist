@@ -38,16 +38,22 @@ export const MovieDetails = () => {
 
     const {movieId, id} = useParams()
     const history = useHistory()
+    const [isLoading, setIsLoading] = useState(true);
 
     //get that movie id from tmdb and set state
     useEffect(() => {
-        
+       if (movieId) {
+        console.log("useEffect", movieId)
         getSearchedMovieById(movieId)
         .then((response) => {
           setMovies(response)
+          setIsLoading(false)
         })
+        } else {
+        setIsLoading(false)
+    }
         }, [])
-
+    
 
     //year only
     const year = new Date(`${movie.release_date}`)
@@ -58,13 +64,13 @@ export const MovieDetails = () => {
     return (
         
         <section className="movie__details">
-            <img className="movie__poster" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/>
+            <img className="movie__photo" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}/>
             <h3>{movie.title}</h3>
             <div>{year.getFullYear()}</div>
             <div>{movie.runtime} minutes</div>
             <div className="overview">{movie.overview}</div>
     
-            <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 20, color: "#ffca28", fontWeight: "bold", border: "solid #ffca28 2px"}}
+            <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 20, color: "white", fontWeight: "bold", border: "solid #f44336 2px"}}
                 onClick={() => {
                 removeMovie(id)
                 .then (() =>
