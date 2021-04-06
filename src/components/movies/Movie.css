@@ -15,16 +15,26 @@
     margin: 15px;
 }
 
+.filtered__moviePoster:hover {
+    position:relative;
+    width:170px;
+    height:auto;
+    display:block;
+    z-index:999;
+  }
+
 .add__movieButton {
     align-items: center;
     opacity: 0.25;
     font-size: 35px;
     background-color: Transparent;
     border: none;
+    font-weight: bold;
 }
 
 .add__movieButton:focus {
-    color: navy;
+    color: #1F7EFD;
+    font-weight: bold;
     opacity: 1;
     outline: none;
     border: none;
@@ -35,15 +45,17 @@ fieldset {
 }
 
 select {
-    padding: 8px 16px;
-    border: 1px solid black;
-    border-radius: 5px;
+
+    border: 0;
+    /* border-radius: 5px; */
     margin: 20px 0px 20px 20px;
+    background-color: transparent;
+    border-bottom: 1px solid #072238;
+    padding: 5px 10px 5px 0px;
 }
 
-option {
-    font-family: Arial;
-    font-size: 19;
+.movie__photo {
+    height: 290px;
 }
 
 .movie__search {
@@ -56,4 +68,5 @@ option {
     margin: auto;
     width: 34%;
     margin-top: 50px;
+    margin-bottom: 50px;
 }

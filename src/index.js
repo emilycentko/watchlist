@@ -4,18 +4,18 @@ import './index.css';
 import { WatchListApp } from './components/WatchListApp';
 import { BrowserRouter as Router } from "react-router-dom"
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
-import amber from '@material-ui/core/colors/amber';
+import red from '@material-ui/core/colors/red';
 import blue from '@material-ui/core/colors/blue';
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: blue[900],
-      contrastText: 'amber[400]',
+      main: '#1976d2',
+      contrastText: 'white',
     },
     secondary: {
-      main: amber[400],
-      contrastText: 'blue[900]',
+      main: red[500],
+      contrastText: '#1F7EFD',
     },
   },
   typography: {

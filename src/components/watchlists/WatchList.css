@@ -7,14 +7,23 @@
   overflow: auto;  
   white-space: nowrap; 
   flex-direction: row;
+  background-image: linear-gradient(to bottom right, #020024, #4a4e58);
+  margin: 20px 0px 20px 20px;
+  border-radius: 3px;
+  box-shadow: 0 6px 8px -3px black;
 }
 
 .movie__poster {
-  /* flex: 0 0 auto; */
-  
-  /* padding: 10px; */
-  border-radius: 5px;
   height: 290px;
+  box-shadow: 0 6px 8px -3px black;
+}
+
+.movie__poster:hover {
+  position:relative;
+  width:200px;
+  height:auto;
+  display:block;
+  z-index:999;
 }
 
 .new__watchlistButton {
@@ -38,4 +47,13 @@
 
 .watchlist__name {
   text-align: center;
+  color: white;
+}
+
+.watchListForm__title {
+  padding: 20px;
+}
+
+.watchlist__name {
+  width: 250px;
 }

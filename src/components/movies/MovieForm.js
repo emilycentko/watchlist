@@ -8,6 +8,7 @@ import { userStorageKey } from "../auth/authSettings"
 import { UserContext } from "../users/UserProvider"
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button'
+import MovieIcon from '@material-ui/icons/Movie';
 import "./Movie.css"
 
 const useStyles = makeStyles((theme) => ({
@@ -133,14 +134,10 @@ export const AddMovieForm = () => {
 
   return (
     <form className="addMovieForm" className={classes.root} noValidate autoComplete="off">
-        <fieldset>
-            <div className="form-group">
-                <MovieSearch />
-            </div>
-        </fieldset>
+        
 
         <fieldset>
-            <div className="form-group2">
+            <div className="custom-select">
 
                 <label htmlFor="watchList">Choose a watch list:</label>
                 <select value ={watchListMovie.watchListId} id="watchListId" className="form-control" onChange={handleControlledInputChange}>
@@ -152,13 +149,21 @@ export const AddMovieForm = () => {
                         </option>
                     ))}
                 </select>
+                <span className="custom-arrow"></span>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <div className="form-group">
+                <MovieSearch />
             </div>
         </fieldset>
         
-        <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 20, color: "#ffca28", fontWeight: "bold", border: "solid #ffca28 2px"}}
+        <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 20, color: "white", fontWeight: "bold", border: "solid #f44336 2px"}}
 
-            onClick={handleSaveMovie}>
-            SAVE TO WATCHLIST
+            onClick={handleSaveMovie}
+            startIcon={<MovieIcon />}>
+            Save
         </Button>
         
         

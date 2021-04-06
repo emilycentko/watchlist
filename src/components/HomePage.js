@@ -27,7 +27,7 @@ export const HomePage = () => {
     return (
         <>
             <div className="home">
-                <h2 className="welcome">Welcome, {user.name}</h2>
+                <h2 className="welcome">Welcome back, {user.name}</h2>
             </div>
         </>
     )
