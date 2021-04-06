@@ -7,20 +7,23 @@ import { userStorageKey } from "../auth/authSettings";
 import { UserContext } from "../users/UserProvider"
 import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 import "./WatchList.css"
 
 const useStyles = makeStyles((theme) => ({
     root: {
       '& > *': {
         // margin: theme.spacing(1),
-        width: '40ch',
+        width: '50ch',
       },
-    button: {
-        marginLeft: 30,
-        },
-    createButton: {
-        marginLeft: 40, 
-    }
+    // button: {
+    //     marginLeft: 30,
+    //     },
+    // createButton: {
+    //     marginLeft: 40, 
+    // }
     },
   }));
 
@@ -29,10 +32,9 @@ const useStyles = makeStyles((theme) => ({
     const classes = useStyles()
 
     const { watchLists, getWatchLists, deleteWatchList } = useContext(WatchListContext)
-    const { watchListMovies, getWatchListMovies} = useContext(WatchListMovieContext)
+    const { getWatchListMovies} = useContext(WatchListMovieContext)
     const { getUsers } = useContext(UserContext)
 
-    const [watchListMovie, setWatchListMovies] = useState([])
 
     const userId = parseInt(sessionStorage.getItem(userStorageKey))
   
@@ -62,7 +64,8 @@ const useStyles = makeStyles((theme) => ({
         <>
             <div className="watchlists">
             <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 60, padding: 10, color: "#white", fontWeight: "bold", border: "solid #f44336 2px"}}
-                onClick={() => {history.push("/watchlists/create")}}>Create a New WatchList
+                onClick={() => {history.push("/watchlists/create")}}
+                startIcon={<AddCircleIcon />}>New WatchList
             </Button>
             </div>
             <div className="watchlist__list">
@@ -72,19 +75,21 @@ const useStyles = makeStyles((theme) => ({
 
                     return <div className ="watchlist">
                                 <div className="single__watchlist">
-                                    <h2 className="watchlist__name">{watchList.name}</h2>
+                                    <h3 className="watchlist__name">{watchList.name}</h3>
 
                                     <div className="watchlist__buttons">
                                         <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 20, color: "#white", fontWeight: "bold", border: "solid #f44336 2px"}}
                                             onClick={() => {
                                             history.push(`/watchlists/edit/${watchList.id}`)
-                                            }}>Edit WatchList Name
+                                            }}
+                                            startIcon={<EditIcon />}>Edit Name
                                         </Button>
 
                                         <Button variant="contained" color="primary" className={classes.addButton} style={{margin: 20, color: "#white", fontWeight: "bold", border: "solid #f44336 2px"}}
                                             onClick= {() => 
-                                            deleteWatchList(watchList.id)}>
-                                            Delete WatchList
+                                            deleteWatchList(watchList.id)}
+                                            startIcon={<DeleteIcon />}>
+                                            Delete
                                         </Button>
                                     </div>
                                 </div>

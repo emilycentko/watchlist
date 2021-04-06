@@ -13,14 +13,7 @@
   box-shadow: 0 6px 8px -3px black;
 }
 
-/* .watchlists {
-  background-color: #212121;
-} */
-
 .movie__poster {
-  /* flex: 0 0 auto; */
-  
-  /* padding: 10px; */
   height: 290px;
   box-shadow: 0 6px 8px -3px black;
 }
@@ -59,4 +52,8 @@
 
 .watchListForm__title {
   padding: 20px;
+}
+
+.watchlist__name {
+  width: 250px;
 }

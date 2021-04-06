@@ -5,6 +5,7 @@ import { userStorageKey } from "../auth/authSettings";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import MovieIcon from '@material-ui/icons/Movie';
 import "./WatchList.css"
 
 const useStyles = makeStyles((theme) => ({
@@ -105,8 +106,9 @@ export const WatchListForm = () => {
             onClick={event => {
                 event.preventDefault()
                 handleSaveWatchList()
-            }}>
-            {watchListId ? "Save WatchList" : "Add New WatchList"}
+            }}
+            startIcon={<MovieIcon />}>
+            {watchListId ? "Save WatchList" : "Add WatchList"}
           </Button>
     </form>
 )

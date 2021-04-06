@@ -29,10 +29,12 @@
     font-size: 35px;
     background-color: Transparent;
     border: none;
+    font-weight: bold;
 }
 
 .add__movieButton:focus {
-    color: navy;
+    color: #1F7EFD;
+    font-weight: bold;
     opacity: 1;
     outline: none;
     border: none;
@@ -66,4 +68,5 @@ select {
     margin: auto;
     width: 34%;
     margin-top: 50px;
+    margin-bottom: 50px;
 }
