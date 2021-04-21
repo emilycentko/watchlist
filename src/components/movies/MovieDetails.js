@@ -54,8 +54,6 @@ export const MovieDetails = () => {
 
     //year only
     const year = new Date(`${movie.release_date}`)
-
-    console.log(movie.title)
     
         
     //details and delete movie

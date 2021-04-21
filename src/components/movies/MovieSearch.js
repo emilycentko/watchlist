@@ -63,7 +63,7 @@ export const MovieSearch = () => {
                   <img className="filtered__moviePoster" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}></img>}
                 
                 {movie.poster_path === null ? "" :
-                <p>{movie.title}</p>}
+                <p className="search_title">{movie.title}</p>}
                 
                 {movie.poster_path === null ? "" :
                 

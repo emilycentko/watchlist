@@ -25,10 +25,14 @@ export const WatchListApp = () => (
     />
 
     <Route path="/login">
-        <Login />
+      <NavBar />
+      <Login />
+      <FooterNav />
     </Route>
     <Route path="/register">
+        <NavBar />
         <Register />
+        <FooterNav />
     </Route>
 </>
 )

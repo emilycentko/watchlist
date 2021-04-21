@@ -5,7 +5,6 @@ import { WatchListApp } from './components/WatchListApp';
 import { BrowserRouter as Router } from "react-router-dom"
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 import red from '@material-ui/core/colors/red';
-import blue from '@material-ui/core/colors/blue';
 
 const theme = createMuiTheme({
   palette: {
