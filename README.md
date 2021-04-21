@@ -11,9 +11,9 @@ A favorite pastime of mine is curating personalized watchlists and recommendatio
 ## Screenshots
 
 ### Add a Movie to a Watchlist
-![add](./src/images/watchlist-add-movie.gif)
+![add](./src/images/add-movie.gif)
 ### View Movie Details
-![detail](./src/images/watchlist-details.gif)
+![detail](./src/images/details.gif)
 
 
 ## Technologies Used
