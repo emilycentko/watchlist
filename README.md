@@ -13,7 +13,7 @@ A favorite pastime of mine is curating personalized watchlists and recommendatio
 ### Add a Movie to a Watchlist
 ![add](./src/images/add-movie.gif)
 ### View Movie Details
-![detail](./src/images/details.gif)
+![detail](./src/images/movie-details.gif)
 
 
 ## Technologies Used
