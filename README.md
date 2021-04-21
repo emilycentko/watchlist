@@ -34,6 +34,7 @@ Request an API key from TMdb.com and insert it into your own hidden Settings.js 
 You can use the JSON data from [watchlist-api](https://github.com/emilycentko/watchlist-api) (or create your own!)
 
 Run a JSON server for watchlist-api
+
 For watchlist, run:
 
 ```
