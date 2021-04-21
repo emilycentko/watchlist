@@ -29,8 +29,11 @@ Movie data from [TMDb](https://www.themoviedb.org/?language=en-US)
 ## Installation
 
 Clone this repository to your local machine
+
 Make a copy of Settings.js.example
+
 Request an API key from TMdb.com and insert it into your own hidden Settings.js file
+
 You can use the JSON data from [watchlist-api](https://github.com/emilycentko/watchlist-api) (or create your own!)
 
 Run a JSON server for watchlist-api
