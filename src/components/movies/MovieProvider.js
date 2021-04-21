@@ -1,4 +1,4 @@
-import React, { useState, createContext, useContext } from "react"
+import React, { useState, createContext } from "react"
 import { tmdbAPI } from "../auth/Settings.js"
 
 // Context to store movies from tmdb and be used by the components that need this data

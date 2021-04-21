@@ -26,7 +26,7 @@
 .add__movieButton {
     align-items: center;
     opacity: 0.25;
-    font-size: 35px;
+    font-size: 40px;
     background-color: Transparent;
     border: none;
     font-weight: bold;
@@ -69,4 +69,8 @@ select {
     width: 34%;
     margin-top: 50px;
     margin-bottom: 50px;
+}
+
+.search_title {
+    max-height: 30px;
 }

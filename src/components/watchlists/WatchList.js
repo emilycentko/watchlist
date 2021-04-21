@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect } from "react"
 import { useHistory} from "react-router-dom"
 import { MovieCard } from "../movies/Movie"
 import { WatchListContext } from "./WatchListProvider"
@@ -18,12 +18,6 @@ const useStyles = makeStyles((theme) => ({
         // margin: theme.spacing(1),
         width: '50ch',
       },
-    // button: {
-    //     marginLeft: 30,
-    //     },
-    // createButton: {
-    //     marginLeft: 40, 
-    // }
     },
   }));
 
