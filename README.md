@@ -1,6 +1,6 @@
 # WatchList
 
-##Description & Background
+## Description & Background
 
 WatchList is an application that helps authenticated users curate their own personal movie lists for themselves and others, much like creating various playlists for various moods, artists, and genres. 
 
