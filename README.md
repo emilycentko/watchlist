@@ -1,6 +1,6 @@
 # WatchList
 
-##Description & Background##
+##Description & Background
 
 WatchList is an application that helps authenticated users curate their own personal movie lists for themselves and others, much like creating various playlists for various moods, artists, and genres. 
 
@@ -12,17 +12,19 @@ A favorite pastime of mine is curating personalized watch lists and recommendati
 
 <b>Built with</b>
 - React.js
-- Material UI and CSS3 for styling
+- [Material UI](https://material-ui.com/) and CSS3 for styling
 
 ## API Reference
 
 Movie data from [TMDb](https://www.themoviedb.org/?language=en-US)
 
-## How to Use
+## Installation
 
 Clone or fork this repository to your local machine
-Request an API key from TMdb.com and insert into a hidden file
+Make a copy of Settings.js.example
+Request an API key from TMdb.com and insert into your own hidden Settings.js file
 You can use the JSON data from [watchlist-api](https://github.com/emilycentko/watchlist-api) or create your own
+
 Run the JSON server for watchlist-api
 Run ```npm start``` for watchlist 
 
