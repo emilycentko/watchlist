@@ -1,5 +1,4 @@
 import React, { useState, createContext } from "react"
-import { tmdbAPI } from "../auth/Settings.js"
 
 // Context to store movies from tmdb and be used by the components that need this data
 export const MovieContext = createContext()
@@ -17,7 +16,7 @@ export const MovieProvider = (props) => {
 
     // Search for a movie provided by tmdb API to search query by title and set state of filtered movies
     const searchMovie = (searchTitle) => {
-        return fetch(`${tmdbAPI.baseURL}${tmdbAPI.apiKey}&query=${searchTitle}`)
+        return fetch(`${process.env.REACT_APP_BASE_URL}${process.env.REACT_APP_API_KEY}&query=${searchTitle}`)
             .then(res => res.json())
             .then(parsedResponse => {
                 setFilteredMovies(parsedResponse.results)
@@ -26,7 +25,7 @@ export const MovieProvider = (props) => {
 
     // Grabs the needed properties for one movie by id in AddMovie form and Details
     const getSearchedMovieById = (id) => {
-        return fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${tmdbAPI.apiKey}&language=en-US`)
+        return fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
             .then(res => res.json())
     }
 
