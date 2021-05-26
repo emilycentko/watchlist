@@ -1,6 +1,6 @@
 // If your json-server API URL or endpoint is different, please change it below!
 export const authApi = {
-  localApiBaseUrl: "http://localhost:8088",
+  localApiBaseUrl: "https://watchlists-api.herokuapp.com",
   endpoint: "users"
 }
 
