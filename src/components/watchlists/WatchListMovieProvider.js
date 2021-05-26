@@ -9,14 +9,14 @@ export const WatchListMovieProvider = (props) => {
     const [movieId, setMovieId] = useState(0)
 
     const getWatchListMovies = () => {
-        return fetch("http://localhost:8088/watchListMovies")
+        return fetch("https://watchlists-api.herokuapp.com/watchListMovies")
             .then(res => res.json())
             .then(setWatchListMovies)
     }
 
     //add a movie from the tmdb API and POST to local JSON watchlist
     const addMovie = movie => {
-        return fetch("http://localhost:8088/watchListMovies", {
+        return fetch("https://watchlists-api.herokuapp.com/watchListMovies", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -27,12 +27,12 @@ export const WatchListMovieProvider = (props) => {
     }
 
     const getWatchListMovieById = (id) => {
-        return fetch(`http://localhost:8088/watchListMovies/${id}`)
+        return fetch(`https://watchlists-api.herokuapp.com/watchListMovies/${id}`)
             .then(res => res.json())
     }
 
     const removeMovie = id => {
-        return fetch(`http://localhost:8088/watchListMovies/${id}`, {
+        return fetch(`https://watchlists-api.herokuapp.com/watchListMovies/${id}`, {
             method: "DELETE"
         })
         .then(getWatchListMovies)

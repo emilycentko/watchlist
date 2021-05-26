@@ -6,13 +6,13 @@ export const WatchListProvider = (props) => {
     const [watchLists, setWatchLists] = useState([])
 
     const getWatchLists = () => {
-        return fetch("http://localhost:8088/watchLists?_embed=watchListMovies")
+        return fetch("https://watchlists-api.herokuapp.com/watchLists?_embed=watchListMovies")
             .then(res => res.json())
             .then(setWatchLists)
     }
 
     const addWatchList = watchList => {
-        return fetch("http://localhost:8088/watchLists", {
+        return fetch("https://watchlists-api.herokuapp.com/watchLists", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -23,12 +23,12 @@ export const WatchListProvider = (props) => {
     }
 
     const getWatchListById = (id) => {
-        return fetch(`http://localhost:8088/watchLists/${id}?_embed=watchListMovies`)
+        return fetch(`https://watchlists-api.herokuapp.com/watchLists/${id}?_embed=watchListMovies`)
             .then(res => res.json())
     }
 
     const editWatchList = watchList => {
-        return fetch(`http://localhost:8088/watchLists/${watchList.id}`, {
+        return fetch(`https://watchlists-api.herokuapp.com/watchLists/${watchList.id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json"
@@ -39,7 +39,7 @@ export const WatchListProvider = (props) => {
       }
 
     const deleteWatchList = id => {
-        return fetch(`http://localhost:8088/watchLists/${id}`, {
+        return fetch(`https://watchlists-api.herokuapp.com/watchLists/${id}`, {
             method: "DELETE"
         })
         .then(getWatchLists)

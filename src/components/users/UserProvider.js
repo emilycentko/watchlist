@@ -9,7 +9,7 @@ export const UserProvider = (props) => {
 
     // Get authenticated users
     const getUsers = () => {
-        return fetch("http://localhost:8088/users")
+        return fetch("https://watchlists-api.herokuapp.com/users")
             .then(res => res.json())
             .then(setUsers)
     }
